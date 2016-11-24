@@ -1,0 +1,8 @@
+# C/C++
+*.s
+*.exe
+
+# Clion
+bin/
+.idea/
+test/lib/
