@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/alogrithms/SelectionSort.h"
-#include "../src/measurement/ArrayUtilities.h"
-
-const size_t TEST_ARR_SIZE = 1024;
+#include "./ArrayTests.h"
 
 class SelectionSortTest: public ::testing::Test {
 
@@ -18,18 +16,6 @@ public:
     }
 
     ~SelectionSortTest()  {
-    }
-};
-
-template <typename T, size_t SIZE>
-void assert_array_sorted( std::array<T, SIZE> & a) {
-    T v1 = a[0];
-    T v2 = a[1];
-
-    for(size_t i = 2; i < TEST_ARR_SIZE; i++) {
-        GTEST_ASSERT_LE(v1, v2);
-        v2 = v1;
-        v2 = a[i];
     }
 };
 
@@ -83,15 +69,15 @@ TEST_F(SelectionSortTest, testSelectionSort_v1WithGeneratedValues) {
 
     fillArrayDesc(*a);
     selectionSort_v1(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayAsc(*a);
     selectionSort_v1(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayRandom(*a);
     selectionSort_v1(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 }
 
 TEST_F(SelectionSortTest, testSelectionSort_v2WithGeneratedValues) {
@@ -99,15 +85,15 @@ TEST_F(SelectionSortTest, testSelectionSort_v2WithGeneratedValues) {
 
     fillArrayDesc(*a);
     selectionSort_v2(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayAsc(*a);
     selectionSort_v2(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayRandom(*a);
     selectionSort_v2(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 }
 
 TEST_F(SelectionSortTest, testSelectionSort_v3WithGeneratedValues) {
@@ -115,14 +101,14 @@ TEST_F(SelectionSortTest, testSelectionSort_v3WithGeneratedValues) {
 
     fillArrayDesc(*a);
     selectionSort_v3(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayAsc(*a);
     selectionSort_v3(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 
     fillArrayRandom(*a);
     selectionSort_v3(*a);
-    assert_array_sorted(*a);
+    ASSERT_ARRAY_SORTED(*a);
 }
 
