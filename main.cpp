@@ -2,6 +2,7 @@
 #include "src/measurement/ArrayUtilities.h"
 #include "src/alogrithms/MinimumSearch.h"
 #include "src/alogrithms/SelectionSort.h"
+#include "src/alogrithms/MergeSort.h"
 #include <chrono>
 #include <sstream>
 
@@ -67,17 +68,28 @@ int main() {
 //    measureRuntime<double, 524288>(stream);
 //    measureRuntime<double, 1048576>(stream);
 
-    measureRuntime<double, 2097152>(stream);
-    measureRuntime<double, 4194304>(stream);
-    measureRuntime<double, 8388608>(stream);
-    measureRuntime<double, 16777216>(stream);
-    measureRuntime<double, 33554432>(stream);
-    measureRuntime<double, 67108864>(stream);
-    measureRuntime<double, 134217728>(stream);
-    measureRuntime<double, 268435456>(stream);
-    measureRuntime<double, 536870912>(stream);
+//    measureRuntime<double, 2097152>(stream);
+//    measureRuntime<double, 4194304>(stream);
+//    measureRuntime<double, 8388608>(stream);
+//    measureRuntime<double, 16777216>(stream);
+//    measureRuntime<double, 33554432>(stream);
+//    measureRuntime<double, 67108864>(stream);
+//    measureRuntime<double, 134217728>(stream);
+//    measureRuntime<double, 268435456>(stream);
+//    measureRuntime<double, 536870912>(stream);
+//
+//    cout << stream.str();
 
-    cout << stream.str();
+
+    array<int, 9> a = {6,2, 4, 1, 5, 3, 8, 7,0};
+
+
+
+    bottomUpMergeSort(a);
+
+    for(size_t i = 0; i < 8; i++) {
+        std::cout << a[i] << std::endl;
+    }
 
     return 0;
 }
