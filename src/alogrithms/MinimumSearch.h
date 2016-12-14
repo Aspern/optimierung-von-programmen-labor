@@ -1,13 +1,7 @@
-#ifndef OPL_MINIMUMSUCHE_H
-#define OPL_MINIMUMSUCHE_H
+#ifndef OPL_MINIMUMSEARCH_H
+#define OPL_MINIMUMSEARCH_H
 
-#include <array>
-
-/**
- * Cacheline von 64 Byte
- * (siehe http://www.cpu-world.com/CPUs/Core_i7/Intel-Core%20i7%20Mobile%20i7-2670QM.html)
- */
-const size_t CACHE_LINE_SIZE = 64;
+#include "../measurement/RuntimeConstants.h"
 
 /**
  * Normale Minimumsuche.
@@ -111,4 +105,4 @@ T minimumSearch_v3(const std::array<T, SIZE> &a) {
 }
 
 
-#endif //OPL_MINIMUMSUCHE_H
+#endif //OPL_MINIMUMSEARCH_H

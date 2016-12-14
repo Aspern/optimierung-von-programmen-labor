@@ -1,7 +1,3 @@
-//
-// Created by Adrian.Weber on 03.11.2016.
-//
-
 #ifndef OPL_SELECTIONSORT_H
 #define OPL_SELECTIONSORT_H
 

@@ -1,7 +1,7 @@
-#include "../src/measurement/ArrayUtilities.h"
-
 #ifndef OPL_ARRAYTESTS_H
 #define OPL_ARRAYTESTS_H
+
+#include "../src/measurement/ArrayUtilities.h"
 
 const size_t TEST_ARR_SIZE = 1024;
 

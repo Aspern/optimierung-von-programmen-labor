@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/alogrithms/SelectionSort.h"
-#include "./ArrayTests.h"
+#include "ArrayTests.h"
 
 class SelectionSortTest: public ::testing::Test {
 
