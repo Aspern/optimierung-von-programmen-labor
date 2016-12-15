@@ -35,20 +35,19 @@ TEST_F(MergeSortTest, testMergeSortWithStaticValues) {
 }
 
 TEST_F(MergeSortTest, testMergeSortWithGeneratedValues) {
-//    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
-//
-//    fillArrayDesc(*a);
-//    bottomUpMergeSort(*a);
-//    ASSERT_ARRAY_SORTED(*a);
-//
-//    fillArrayAsc(*a);
-//    bottomUpMergeSort(*a);
-//    ASSERT_ARRAY_SORTED(*a);
-//
-//    fillArrayRandom(*a);
-//    fillArrayRandom(*a);
-//    bottomUpMergeSort(*a);
-//    ASSERT_ARRAY_SORTED(*a);
+    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+
+    fillArrayDesc(*a);
+    bottomUpMergeSort(*a);
+    ASSERT_ARRAY_SORTED(*a);
+
+    fillArrayAsc(*a);
+    bottomUpMergeSort(*a);
+    ASSERT_ARRAY_SORTED(*a);
+
+    fillArrayRandom(*a);
+    bottomUpMergeSort(*a);
+    ASSERT_ARRAY_SORTED(*a);
 }
 
 

@@ -17,7 +17,7 @@ void quickSort(std::array<T, SIZE> &arr, int startIndex, int endIndex) {
         if (i <= j) {
             std::swap(arr[i], arr[j]);
             i++;
-            j--;
+            j--;                               
         }
     };
 
