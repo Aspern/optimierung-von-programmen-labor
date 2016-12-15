@@ -3,14 +3,6 @@
 
 #include <array>
 
-template<typename T, size_t SIZE>
-void print_arr(std::array<T, SIZE> &a) {
-    for (size_t i = 0; i < SIZE; i++) {
-        std::cout << "a[" << i << "] = " << a[i] << std::endl;
-    }
-    std::cout << std::endl;
-}
-
 /**
  * Bitonische Variante der Funktion merge, dabei wird die vordere Hälfte der Folge in ihrer normalen Reihenfolge,
  * die hintere Hälfte jedoch in umgekehrter Reihenfolge in das Zwischen-Array kopiert. Somit entfallen zwei
