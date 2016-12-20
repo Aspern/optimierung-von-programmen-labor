@@ -2,7 +2,7 @@
 #include "../src/alogrithms/QuickSort.h"
 #include "ArrayTests.h"
 
-class QuickSortTest: public ::testing::Test {
+class QuickSortTest : public ::testing::Test {
 
 public:
 
@@ -15,7 +15,7 @@ public:
     void TearDown() {
     }
 
-    ~QuickSortTest()  {
+    ~QuickSortTest() {
     }
 };
 

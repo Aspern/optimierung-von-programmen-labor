@@ -20,7 +20,7 @@ set(SOURCE_FILES main.cpp
         src/alogrithms/MergeSort.h
         src/alogrithms/QuickSort.h
         src/measurement/RuntimeConstants.h
-)
+        src/measurement/Chronometry.h)
 add_executable(opl ${SOURCE_FILES})
 
 add_subdirectory(test)

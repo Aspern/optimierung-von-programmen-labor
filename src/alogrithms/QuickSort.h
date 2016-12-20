@@ -33,7 +33,6 @@ void quickSort(std::array<T, SIZE> &arr, int startIndex, int endIndex) {
 }
 
 
-
 template<typename T, size_t SIZE>
 void quicksortThreeWay(std::array<T, SIZE> &a, int l, int r) {
     int i = l - 1;
@@ -41,8 +40,12 @@ void quicksortThreeWay(std::array<T, SIZE> &a, int l, int r) {
     int p = l - 1;
     int q = r;
 
-    T v = a[(l + r) / 2]; //T v = a[r];
+    // Verwende mittleres Element als Pivot-Element.
+    std::swap(a[(l + r) / 2], a[r]);
+
+    T v = a[r];
     if (r <= l) return;
+
     for (;;) {
         while (a[++i] < v);
 
@@ -78,7 +81,7 @@ void quicksortThreeWay(std::array<T, SIZE> &a, int l, int r) {
 
 template<typename T, size_t SIZE>
 void quickSort(std::array<T, SIZE> &arr) {
-    quicksortThreeWay(arr, 0, SIZE);
+    quicksortThreeWay(arr, 0, SIZE - 1);
 }
 
 #endif //OPL_QUICKSORT_H

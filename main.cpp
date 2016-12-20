@@ -3,6 +3,7 @@
 #include "src/alogrithms/MinimumSearch.h"
 #include "src/alogrithms/SelectionSort.h"
 #include "src/alogrithms/MergeSort.h"
+#include "src/measurement/Chronometry.h"
 #include <chrono>
 #include <sstream>
 
@@ -57,11 +58,13 @@ void measureRuntime(stringstream &stream) {
     delete a;
 }
 
-int main() {
-    stringstream stream;
 
-/*    measureRuntime<double, 16384>(stream);
-    measureRuntime<double, 32768>(stream);*/
+
+int main() {
+ /*   stringstream stream;
+
+*//*    measureRuntime<double, 16384>(stream);
+    measureRuntime<double, 32768>(stream);*//*
 //    measureRuntime<double, 65536>(stream);
 //    measureRuntime<double, 131072>(stream);
 //    measureRuntime<double, 262144>(stream);
@@ -90,6 +93,10 @@ int main() {
     for(size_t i = 0; i < 8; i++) {
         std::cout << a[i] << std::endl;
     }
+
+    return 0;*/
+
+    std::cout << std::endl << is_prime<6>::value << std::endl;
 
     return 0;
 }
