@@ -12,7 +12,7 @@
 template<typename T, size_t SIZE>
 void insertionSort_v1(std::array<T, SIZE> &a, size_t l, size_t r) {
     for (size_t i = l + 1; i < r; i++) {
-        for(size_t j = i; j > 0 && a[j - 1] > a[j]; j--) {
+        for (size_t j = i; j > 0 && a[j - 1] > a[j]; j--) {
             std::swap(a[j], a[j - 1]);
         }
     }
@@ -26,14 +26,8 @@ void insertionSort_v1(std::array<T, SIZE> &a, size_t l, size_t r) {
  */
 template<typename T, size_t SIZE>
 void insertionSort_v1(std::array<T, SIZE> &a) {
-    /*for (size_t i = 1; i < SIZE; i++) {
-        for(size_t j = i; j > 0 && a[j - 1] > a[j]; j--) {
-            std::swap(a[j], a[j - 1]);
-        }
-    }*/
     insertionSort_v1(a, 0, SIZE);
 }
-
 
 
 /**
@@ -56,17 +50,18 @@ void insertionSort_v2(std::array<T, SIZE> &a) {
     }*/
 
 
-   /* for(size_t i = 0; i < SIZE; i++) {
-        for(size_t j = i + range; j > 0 && a[j - range - 1] > a[j - range]; j -= range) {
-            __builtin_prefetch(&a[i - range]);
-            for(size_t k = j; k > i - range; k--) {
-                std::swap(a[k], a[k - 1]);
-            }
-        }
-    }*/
+    /* for(size_t i = 0; i < SIZE; i++) {
+         for(size_t j = i + range; j > 0 && a[j - range - 1] > a[j - range]; j -= range) {
+             __builtin_prefetch(&a[i - range]);
+             for(size_t k = j; k > i - range; k--) {
+                 std::swap(a[k], a[k - 1]);
+             }
+         }
+     }*/
 
-    size_t cacheCnt;
+/*    size_t cacheCnt;
 
+    //Schleifen ausrollen
     for (size_t i = 1; i < SIZE; i++) {
         cacheCnt = 0;
         for (size_t j = i; j > 0 && a[j - 1] > a[j]; j--) {
@@ -77,9 +72,32 @@ void insertionSort_v2(std::array<T, SIZE> &a) {
             cacheCnt--;
             std::swap(a[j], a[j - 1]);
         }
+    }*/
+
+/*    for(size_t i = 1; i < SIZE; i++) {
+        for(size_t j = i + range; j > range;) {
+            j -= range;
+            __builtin_prefetch(&a[j - range]);
+            for(size_t k = j; k > 0 && a[k -1] > a[k] && k > j - range; k--) {
+                std::swap(a[k], a[k - 1]);
+            }
+        }*/
+
+    const size_t cacheRange = CACHE_LINE_SIZE / sizeof(T);
+
+    for (size_t i = 1; i < SIZE; i++) {
+
+        for (size_t j = i + cacheRange; j > cacheRange;) {
+            j -= cacheRange;
+            __builtin_prefetch(&a[j - cacheRange]);
+
+            for (size_t k = 0; j - k >= 1 && a[j - 1 - k] > a[j - k] && k < cacheRange; k++) {
+                std::swap(a[j - 1 - k], a[j - k]);
+            }
+        }
     }
 
-
 }
+
 
 #endif //OPL_INSERTIONSORT_H

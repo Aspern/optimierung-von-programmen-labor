@@ -3,6 +3,7 @@
 
 #include <array>
 #include "InsertionSort.h"
+#include "MergeSort.h"
 
 template<typename T, size_t SIZE>
 void quickSort(std::array<T, SIZE> &arr, int startIndex, int endIndex) {
@@ -85,10 +86,13 @@ void quickSort(std::array<T, SIZE> &arr) {
     quicksortThreeWay(arr, 0, SIZE - 1);
 }
 
-template<typename T, size_t SIZE>
-void quicksortThreeWayhybrid(std::array<T, SIZE> &a, int l, int r) {
+// Hardwareabhängier Wert, ab dem Quicksort ineffizient wird.
+const int CUT_OFF = 9;
 
-    if(r -l < 9) {
+template<typename T, size_t SIZE>
+void quicksortThreeWayhybrid(std::array<T, SIZE> &a, std::array<T, SIZE> &aux, int l, int r) {
+
+    if (r - l < CUT_OFF) {
         insertionSort_v1(a, l, r + 1);
     } else {
 
@@ -132,14 +136,24 @@ void quicksortThreeWayhybrid(std::array<T, SIZE> &a, int l, int r) {
         for (int k = r - 1; k > q; k--, i++)
             std::swap(a[i], a[k]);
 
-        quicksortThreeWay(a, l, j);
-        quicksortThreeWay(a, i, r);
+        //Verhältnis prüfen bsp 10 mal größer
+        if (j - l < CUT_OFF * (r-i) || r - i < (j-l) * CUT_OFF) {
+            int mid = (l + r) / 2;
+            quicksortThreeWayhybrid(a, aux, l, mid);
+            quicksortThreeWayhybrid(a, aux, mid + 1, r);
+            bionicMerge(a, aux, l, mid, r);
+        } else {
+            quicksortThreeWayhybrid(a, aux, l, j);
+            quicksortThreeWayhybrid(a,aux, i, r);
+        }
     }
 }
 
 template<typename T, size_t SIZE>
-void quickSort_v2(std::array<T, SIZE> &arr) {
-    quicksortThreeWayhybrid(arr, 0, SIZE - 1);
+void quickSort_v2(std::array<T, SIZE> &a) {
+    std::array<T, SIZE> *aux = new std::array<T, SIZE>();
+    quicksortThreeWayhybrid(a, *aux, 0, SIZE - 1);
+    delete aux;
 }
 
 #endif //OPL_QUICKSORT_H

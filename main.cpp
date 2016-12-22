@@ -3,6 +3,7 @@
 #include "src/alogrithms/MinimumSearch.h"
 #include "src/alogrithms/SelectionSort.h"
 #include "src/alogrithms/MergeSort.h"
+#include "src/alogrithms/QuickSort.h"
 #include "src/measurement/Chronometry.h"
 #include <chrono>
 #include <sstream>
@@ -96,7 +97,15 @@ int main() {
 
     return 0;*/
 
-    std::cout << std::endl << is_prime<6>::value << std::endl;
+    //std::cout << std::endl << is_prime<6>::value << std::endl;
+
+    std::array<int, 32> a = {1, 99, 5, -4, 8, 7, 6, 1, 0, 47, 635, 21, -6, 4, 98, 76, 1, 99, 5, -4, 8, 7, 6, 1, 0, 47, 635, 21, -6, 4, 98, 76};
+
+    quickSort(a);
+
+    for(size_t i = 0; i < 32; i++) {
+        std::cout << std::endl << a[i] << std::endl;
+    }
 
     return 0;
 }

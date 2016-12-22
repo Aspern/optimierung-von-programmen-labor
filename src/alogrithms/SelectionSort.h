@@ -4,6 +4,7 @@
 #include <array>
 #include "MinimumSearch.h"
 
+
 /**
  * Für den Algorithmus 'Sortieren mit Direkter Auswahl' mit der
  * normalen Minimumsuche aus.
@@ -12,7 +13,7 @@
  */
 template<typename T, size_t SIZE>
 void selectionSort_v1(std::array<T, SIZE> &a) {
-    for(size_t i = 0; i < SIZE - 1; i++) {
+    for (size_t i = 0; i < SIZE - 1; i++) {
         std::swap(a[i], a[minimumSearch_v1(a, i)]);
     }
 }
@@ -25,7 +26,7 @@ void selectionSort_v1(std::array<T, SIZE> &a) {
  */
 template<typename T, size_t SIZE>
 void selectionSort_v2(std::array<T, SIZE> &a) {
-    for(size_t i = 0; i < SIZE - 1; i++) {
+    for (size_t i = 0; i < SIZE - 1; i++) {
         std::swap(a[i], a[minimumSearch_v2(a, i)]);
     }
 }
@@ -38,9 +39,10 @@ void selectionSort_v2(std::array<T, SIZE> &a) {
  */
 template<typename T, size_t SIZE>
 void selectionSort_v3(std::array<T, SIZE> &a) {
-    for(size_t i = 0; i < SIZE - 1; i++) {
+    for (size_t i = 0; i < SIZE - 1; i++) {
         std::swap(a[i], a[minimumSearch_v3(a, i)]);
     }
 }
+
 
 #endif //OPL_SELECTIONSORT_H
