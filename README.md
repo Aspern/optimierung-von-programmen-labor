@@ -32,6 +32,8 @@ Die Ausführungsdatei befindet sich nach einem erfolgreichen Build im `bin` Verz
 
     $ bin>opl.exe
     
+Die Ergebnisse werden in die Datei `results.txt` geschrieben.
+    
 ###Tests
 
 Die Tests für die Algorithmen müssen mit folgender Option gebaut werden.

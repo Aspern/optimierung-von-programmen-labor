@@ -4,11 +4,13 @@
 #include <chrono>
 
 #include "./ArrayTools.h"
+#include "./Result.h"
 #include "../runtime/Constants.h"
 #include "../algorithm/SelectionSort.h"
 #include "../algorithm/InsertionSort.h"
 #include "../algorithm/MergeSort.h"
 #include "../algorithm/QuickSort.h"
+
 
 namespace opl {
 
@@ -20,25 +22,21 @@ namespace opl {
                 opl::fillArrayRandom
         };
 
-        static void execute(void(*algorithm)(std::array<double, SIZE> &), std::array<double, SIZE> &a) {
+        static void execute(void(*algorithm)(std::array<double, SIZE> &), std::array<double, SIZE> &a, Result &result) {
             data[N](a);
             opl::clearCache();
             auto start = std::chrono::high_resolution_clock::now();
             algorithm(a);
             auto end = std::chrono::high_resolution_clock::now();
-            std::cout << "\t\tC"
-                      << N
-                      << ": "
-                      << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-                      << "ms"
-                      << std::endl;
-            TestCases<SIZE, N + 1>::execute(algorithm, a);
+            result.addMode(N, std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count());
+            TestCases<SIZE, N + 1>::execute(algorithm, a, result);
         }
     };
 
     template<size_t SIZE>
     struct TestCases<SIZE, 3> {
-        static void execute(void(*algorithm)(std::array<double, SIZE> &), std::array<double, SIZE> &a) {}
+        static void
+        execute(void(*algorithm)(std::array<double, SIZE> &), std::array<double, SIZE> &a, Result &result) {}
     };
 
     template<size_t SIZE, size_t N>
@@ -54,33 +52,33 @@ namespace opl {
                 opl::quickSortHybrid
         };
 
-        static void execute(std::array<double, SIZE> &a) {
-            std::cout << "\tA" << N << ":" << std::endl;
-            TestCases<SIZE, 0>::execute(data[N], a);
-            Algorithms<SIZE, N + 1>::execute(a);
+        static void execute(std::array<double, SIZE> &a, Result &result) {
+            result.addAlgorithm(N);
+            TestCases<SIZE, 0>::execute(data[N], a, result);
+            Algorithms<SIZE, N + 1>::execute(a, result);
         }
     };
 
     template<size_t SIZE>
     struct Algorithms<SIZE, 8> {
-        static void execute(std::array<double, SIZE> &a) {}
+        static void execute(std::array<double, SIZE> &a, Result &result) {}
     };
 
 
     template<size_t SIZE>
     struct Chronometry {
-        static void execute() {
+        static void execute(Result &result) {
             std::array<double, SIZE> *a = new std::array<double, SIZE>();
-            std::cout << "SIZE(" << SIZE << "):" << std::endl;
-            Algorithms<SIZE, 0>::execute(*a);
-            Chronometry<SIZE * 2>::execute();
+            result.addSize(SIZE);
+            Algorithms<SIZE, 0>::execute(*a, result);
+            Chronometry<SIZE * 2>::execute(result);
             delete a;
         }
     };
 
     template<>
     struct Chronometry<opl::constant::max_array_size> {
-        static void execute() {}
+        static void execute(Result &result) {}
     };
 
 }
