@@ -12,6 +12,8 @@ set(EXTERN_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${EXTERN_CMAKE_CXX_FLAGS} -std=c++14 -g0 -O3 -Wall -Wpedantic -Werror")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
+option(BUILD_TESTS "Build tests" OFF)
+
 set(SOURCE_FILES main.cpp
         src/algorithm/MinimumSearch.h
         src/algorithm/SelectionSort.h
@@ -25,4 +27,6 @@ set(SOURCE_FILES main.cpp
 
 add_executable(opl ${SOURCE_FILES})
 
-add_subdirectory(test)
+if (BUILD_TESTS)
+    add_subdirectory(test)
+endif ()
