@@ -35,10 +35,6 @@ namespace opl {
          */
         const size_t max_array_size = 131072;
 
-        /**
-         * Number of implemented algorithms.
-         */
-        const size_t num_algorithms = 8;
     }
 }
 #endif //OPL_RUNTIMECONSTANTS_H
