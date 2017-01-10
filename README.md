@@ -25,22 +25,22 @@ Das Programm zur Zeitmessung kann anschließend wie folgt installiert werden.
 
     $ git clone https://github.com/Aspern/optimierung-von-programmen-labor.git
     $ cd optimierung-von-programmen-labor
-    $ optimierung-von-programmen-labor> cmake .
-    $ optimierung-von-programmen-labor> make install
+    $ cmake .
+    $ make
 
 Die Ausführungsdatei befindet sich nach einem erfolgreichen Build im `bin` Verzeichnis.
 
-    $ optimierung-von-programmen-labor/bin>opl.exe
+    $ bin>opl.exe
     
 ###Tests
 
 Die Tests für die Algorithmen müssen mit folgender Option gebaut werden.
 
-    $ optimierung-von-programmen-labor> cmake . BUILD_TESTS=ON
+    $ cmake . -DBUILD_TESTS=ON
     
 Anschließend können die Tests ausgeführt werden.
 
-    $ optimierung-von-programmen-labor/bin>runUnitTests.exe
+    $ bin>runUnitTests.exe
 
 
 
