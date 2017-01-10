@@ -1,114 +1,112 @@
 #include <gtest/gtest.h>
-#include "../src/alogrithms/SelectionSort.h"
-#include "ArrayTests.h"
+#include "../src/algorithm/SelectionSort.h"
 
-class SelectionSortTest: public ::testing::Test {
-
+class SelectionSortTest : public ::testing::Test {
 public:
+    SelectionSortTest() {}
 
-    SelectionSortTest() {
-    }
+    void SetUp() {}
 
-    void SetUp() {
-    }
+    void TearDown() {}
 
-    void TearDown() {
-    }
-
-    ~SelectionSortTest()  {
-    }
+    ~SelectionSortTest() {}
 };
 
-TEST_F(SelectionSortTest, testSelectionSort_v1WithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(SelectionSortTest, sortWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
 
-    selectionSort_v1(a);
+    opl::selectionSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
 }
 
-TEST_F(SelectionSortTest, testSelectionSort_v2WithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(SelectionSortTest, sortWithBool) {
+    std::array<bool, 2> a = {true, false};
 
-    selectionSort_v2(a);
+    opl::selectionSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
 }
 
-TEST_F(SelectionSortTest, testSelectionSort_v3WithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(SelectionSortTest, sortWithString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
 
-    selectionSort_v3(a);
+    opl::selectionSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
 }
 
-TEST_F(SelectionSortTest, testSelectionSort_v1WithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+TEST_F(SelectionSortTest, sortOptimizedWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
 
-    fillArrayDesc(*a);
-    selectionSort_v1(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    opl::selectionSortOptimized(a);
 
-    fillArrayAsc(*a);
-    selectionSort_v1(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    selectionSort_v1(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
 }
 
-TEST_F(SelectionSortTest, testSelectionSort_v2WithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+TEST_F(SelectionSortTest, sortOptimizedWithBool) {
+    std::array<bool, 2> a = {true, false};
 
-    fillArrayDesc(*a);
-    selectionSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    opl::selectionSortOptimized(a);
 
-    fillArrayAsc(*a);
-    selectionSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    selectionSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
 }
 
-TEST_F(SelectionSortTest, testSelectionSort_v3WithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+TEST_F(SelectionSortTest, sortOptimizedWithString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
 
-    fillArrayDesc(*a);
-    selectionSort_v3(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    opl::selectionSortOptimized(a);
 
-    fillArrayAsc(*a);
-    selectionSort_v3(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    selectionSort_v3(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
 }
 
+TEST_F(SelectionSortTest, sortWithPrefetchWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
+
+    opl::selectionSortOptimized(a);
+
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
+}
+
+TEST_F(SelectionSortTest,  sortWithPrefetchWithBool) {
+    std::array<bool, 2> a = {true, false};
+
+    opl::selectionSortOptimized(a);
+
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
+}
+
+TEST_F(SelectionSortTest,  sortWithPrefetchString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
+
+    opl::selectionSortOptimized(a);
+
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
+}

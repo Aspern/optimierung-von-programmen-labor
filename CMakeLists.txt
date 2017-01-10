@@ -13,14 +13,14 @@ set(CMAKE_CXX_FLAGS "${EXTERN_CMAKE_CXX_FLAGS} -std=c++14 -g0 -O3 -Wall -Wpedant
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 set(SOURCE_FILES main.cpp
-        src/alogrithms/MinimumSearch.h
-        src/alogrithms/SelectionSort.h
-        src/measurement/ArrayUtilities.h
-        src/alogrithms/InsertionSort.h
-        src/alogrithms/MergeSort.h
-        src/alogrithms/QuickSort.h
-        src/measurement/RuntimeConstants.h
-        src/measurement/Chronometry.h
+        src/algorithm/MinimumSearch.h
+        src/algorithm/SelectionSort.h
+        src/algorithm/InsertionSort.h
+        src/algorithm/MergeSort.h
+        src/algorithm/QuickSort.h
+        src/runtime/Constants.h
+        src/util/Chronometry.h
+        src/util/ArrayTools.h
 )
 
 add_executable(opl ${SOURCE_FILES})

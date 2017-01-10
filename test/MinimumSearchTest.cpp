@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "./util/SimpleArrays.h"
-#include "../src/alogrithms/MinimumSearch.h"
+#include "../src/algorithm/MinimumSearch.h"
 
 class MinimumSearchTest : public ::testing::Test {
 public:

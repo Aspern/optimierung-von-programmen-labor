@@ -1,53 +1,46 @@
 #include <gtest/gtest.h>
-#include "../src/alogrithms/MergeSort.h"
-#include "ArrayTests.h"
+#include "../src/algorithm/MergeSort.h"
 
-class MergeSortTest: public ::testing::Test {
-
+class MergeSortTest : public ::testing::Test {
 public:
+    MergeSortTest() {}
 
-    MergeSortTest() {
-    }
+    void SetUp() {}
 
-    void SetUp() {
-    }
+    void TearDown() {}
 
-    void TearDown() {
-    }
-
-    ~MergeSortTest()  {
-    }
+    ~MergeSortTest() {}
 };
 
-TEST_F(MergeSortTest, testMergeSortWithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(MergeSortTest, sortWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
 
-    bottomUpMergeSort(a);
+    opl::bottomUpMergeSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
 }
 
-TEST_F(MergeSortTest, testMergeSortWithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+TEST_F(MergeSortTest, sortWithBool) {
+    std::array<bool, 2> a = {true, false};
 
-    fillArrayDesc(*a);
-    bottomUpMergeSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    opl::bottomUpMergeSort(a);
 
-    fillArrayAsc(*a);
-    bottomUpMergeSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    bottomUpMergeSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
 }
 
+TEST_F(MergeSortTest, sortWithString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
 
+    opl::bottomUpMergeSort(a);
+
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
+}

@@ -9,12 +9,18 @@ add_subdirectory(lib/gtest-1.8.0)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_executable(runUnitTests
+        util/TypedArrayTest.cpp
+        util/SimpleArrays.h
         MinimumSearchTest.cpp
         SelectionSortTest.cpp
         InsertionSortTest.cpp
         QuickSortTest.cpp
         MergeSortTest.cpp
-        util/TypedArrayTest.cpp util/SimpleArrays.h TypedMinimumSearchTest.cpp)
+        TypedMinimumSearchTest.cpp
+        TypedSelectionSortTest.cpp
+        TypedInsertionSortTest.cpp
+        TypedMergeSortTest.cpp
+        TypedQuickSortTest.cpp)
 
 target_link_libraries(runUnitTests gtest gtest_main)
 

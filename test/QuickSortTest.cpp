@@ -1,85 +1,79 @@
 #include <gtest/gtest.h>
-#include "../src/alogrithms/QuickSort.h"
-#include "ArrayTests.h"
+#include "../src/algorithm/QuickSort.h"
 
 class QuickSortTest : public ::testing::Test {
-
 public:
+    QuickSortTest() {}
 
-    QuickSortTest() {
-    }
+    void SetUp() {}
 
-    void SetUp() {
-    }
+    void TearDown() {}
 
-    void TearDown() {
-    }
-
-    ~QuickSortTest() {
-    }
+    ~QuickSortTest() {}
 };
 
-TEST_F(QuickSortTest, testQuickSortWithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(QuickSortTest, sortWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
 
-    quickSort(a);
+    opl::quickSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
 }
 
-TEST_F(QuickSortTest, testQuickSortWithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+TEST_F(QuickSortTest, sortWithBool) {
+    std::array<bool, 2> a = {true, false};
 
-    fillArrayDesc(*a);
-    quickSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    opl::quickSort(a);
 
-    fillArrayAsc(*a);
-    quickSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    quickSort(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
 }
 
-TEST_F(QuickSortTest, testQuickSortHybridWithStaticValues) {
-    std::array<int, 8> a = {77, 5, 1, 6, 49, 87444, -4, 0};
+TEST_F(QuickSortTest, sortWithString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
 
-    quickSort_v2(a);
+    opl::quickSort(a);
 
-    ASSERT_EQ(a[0], -4);
-    ASSERT_EQ(a[1], 0);
-    ASSERT_EQ(a[2], 1);
-    ASSERT_EQ(a[3], 5);
-    ASSERT_EQ(a[4], 6);
-    ASSERT_EQ(a[5], 49);
-    ASSERT_EQ(a[6], 77);
-    ASSERT_EQ(a[7], 87444);
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
 }
 
+TEST_F(QuickSortTest, sortHybridWithNumber) {
+    std::array<float, 6> a = {47.2, 50, -0.5, 0, 42, 50};
 
-TEST_F(QuickSortTest, testHybridQuickSortWithGeneratedValues) {
-    std::array<int, TEST_ARR_SIZE> *a = new std::array<int, TEST_ARR_SIZE>();
+    opl::quickSortHybrid(a);
 
-    fillArrayDesc(*a);
-    quickSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayAsc(*a);
-    quickSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
-
-    fillArrayRandom(*a);
-    quickSort_v2(*a);
-    ASSERT_ARRAY_SORTED(*a);
+    ASSERT_FLOAT_EQ(a[0] , -0.5);
+    ASSERT_FLOAT_EQ(a[1] , 0);
+    ASSERT_FLOAT_EQ(a[2] , 42);
+    ASSERT_FLOAT_EQ(a[3] , 47.2);
+    ASSERT_FLOAT_EQ(a[4] , 50);
+    ASSERT_FLOAT_EQ(a[5] , 50);
 }
 
+TEST_F(QuickSortTest, sortHybridWithBool) {
+    std::array<bool, 2> a = {true, false};
 
+    opl::quickSortHybrid(a);
+
+    ASSERT_EQ(a[0] , false);
+    ASSERT_EQ(a[1] , true);
+}
+
+TEST_F(QuickSortTest, sortHybridWithString) {
+    std::array<std::string, 4> a = {"Z", "G", "K", "A"};
+
+    opl::quickSortHybrid(a);
+
+    ASSERT_EQ(a[0] , "A");
+    ASSERT_EQ(a[1] , "G");
+    ASSERT_EQ(a[2] , "K");
+    ASSERT_EQ(a[3] , "Z");
+}

@@ -1,12 +1,9 @@
 #include "./util/TypedArrayTest.cpp"
-#include "../src/alogrithms/MinimumSearch.h"
-
-const size_t SIZE = 8;
+#include "../src/algorithm/MinimumSearch.h"
 
 template<typename T>
 class TypedMinimumSearchTest : public ::TypedArrayTest<T> {
 public:
-
     std::array<T, SIZE> *const array_;
 
     TypedMinimumSearchTest() : array_(new std::array<T, SIZE>()) {}
@@ -34,8 +31,6 @@ TYPED_TEST(TypedMinimumSearchTest, findMinimumAsc) {
 TYPED_TEST(TypedMinimumSearchTest, findMinimumDesc) {
     this->fillDesc(*this->array_);
     auto min = this->array_->at(SIZE - 1);
-
-
 
     ASSERT_EQ(opl::minimum(*this->array_), min);
     ASSERT_EQ(opl::minimumOptimized(*this->array_), min);

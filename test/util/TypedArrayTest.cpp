@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include <random>
 
+const size_t SIZE = 1024;
+
 template<typename T>
 class TypedArrayTest : public ::testing::Test {
 protected:
