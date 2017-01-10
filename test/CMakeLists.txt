@@ -2,7 +2,7 @@ project(test)
 
 # Für die Tests müssen diese Compiler-Flags verwendet werden, da
 # Google Tests sonst fehler wirft.
-set(CMAKE_CXX_FLAGS "${EXTERN_CMAKE_CXX_FLAGS}  -std=gnu++0x")
+set(CMAKE_CXX_FLAGS "${EXTERN_CMAKE_CXX_FLAGS}  -std=gnu++14")
 
 add_subdirectory(lib/gtest-1.8.0)
 
@@ -14,7 +14,7 @@ add_executable(runUnitTests
         InsertionSortTest.cpp
         QuickSortTest.cpp
         MergeSortTest.cpp
-)
+        util/TypedArrayTest.cpp util/SimpleArrays.h TypedMinimumSearchTest.cpp)
 
 target_link_libraries(runUnitTests gtest gtest_main)
 

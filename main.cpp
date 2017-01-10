@@ -50,21 +50,50 @@ void measureSortAlgorithm(array<T, SIZE> &a, void(*f)(array<T, SIZE> &a), string
 template<typename T, size_t N>
 void measureRuntime(stringstream &stream) {
     array<T, N> *a = new array<double, N>();
-    measureMinimumSearchAlgorithm(*a, minimumSearch_v1, stream);
-    measureMinimumSearchAlgorithm(*a, minimumSearch_v2, stream);
-    measureMinimumSearchAlgorithm(*a, minimumSearch_v3, stream);
+    measureMinimumSearchAlgorithm(*a, opl::minimum, stream);
+    measureMinimumSearchAlgorithm(*a, opl::minimumOptimized, stream);
+    measureMinimumSearchAlgorithm(*a, opl::minimumWithPrefetch, stream);
     measureSortAlgorithm(*a, selectionSort_v1, stream);
     measureSortAlgorithm(*a, selectionSort_v2, stream);
     measureSortAlgorithm(*a, selectionSort_v3, stream);
     delete a;
 }
 
+template<typename T, size_t SIZE>
+void measureAlgorithm(void (*algorithm)(std::array<T, SIZE> &)) {
+    std::array<T, SIZE> *a = new std::array<T, SIZE>();
 
+    std::cout << std::endl << "Starting..." << std::endl;
+    algorithm(*a);
+    std::cout << std::endl << "Ending..." << std::endl;
+}
+
+template<typename T, size_t SIZE, size_t N>
+void measureAlgorithms(const std::array<void (*)(std::array<T, SIZE> &), N> &algorithms) {
+    for (size_t i = 0; i < N; ++i)
+        measureAlgorithm(algorithms[i]);
+}
+
+
+template<size_t SIZE>
+struct Chronometry {
+    static void measure() {
+        measureAlgorithms<double, SIZE, 1>({selectionSort_v1});
+        Chronometry<SIZE * 2>::measure();
+    }
+};
+
+template<>
+struct Chronometry<64> {
+    static void measure() {
+        // Stop recursive creating arrays.
+    }
+};
 
 int main() {
- /*   stringstream stream;
+    /*   stringstream stream;
 
-*//*    measureRuntime<double, 16384>(stream);
+   *//*    measureRuntime<double, 16384>(stream);
     measureRuntime<double, 32768>(stream);*//*
 //    measureRuntime<double, 65536>(stream);
 //    measureRuntime<double, 131072>(stream);
@@ -99,15 +128,11 @@ int main() {
 
     //std::cout << std::endl << is_prime<6>::value << std::endl;
 
-    std::array<int, 32> a = {1, 99, 5, -4, 8, 7, 6, 1, 0, 47, 635, 21, -6, 4, 98, 76, 1, 99, 5, -4, 8, 7, 6, 1, 0, 47, 635, 21, -6, 4, 98, 76};
 
-    quickSort(a);
-
-    for(size_t i = 0; i < 32; i++) {
-        std::cout << std::endl << a[i] << std::endl;
-    }
+    Chronometry<2>::measure();
 
     return 0;
 }
+
 
 
