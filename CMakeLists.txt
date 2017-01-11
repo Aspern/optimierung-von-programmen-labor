@@ -27,6 +27,5 @@ set(SOURCE_FILES main.cpp
 
 add_executable(opl ${SOURCE_FILES})
 
-if (BUILD_TESTS)
+
     add_subdirectory(test)
-endif ()

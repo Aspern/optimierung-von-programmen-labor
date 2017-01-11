@@ -34,8 +34,10 @@ protected:
     template<size_t SIZE>
     bool isSorted(std::array<T, SIZE> &a) {
         for (size_t i = 0; i < SIZE - 1; ++i)
-            if (a[i] > a[i + 1])
+            if (a[i] > a[i + 1]) {
+                std::cout << std::endl << "a[i] > a[i+1]: " << a[i] << " > " << a[i + 1] << " @i=" << i << std::endl;
                 return false;
+            }
         return true;
     }
 };

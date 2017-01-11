@@ -9,13 +9,13 @@ namespace opl {
      * Sorts an array from between ´left´ and ´right´ from the smallest to the largest element.
      *
      * @param a Array with values
-     * @param left Left border
-     * @param right Right border
+     * @param lo Left border
+     * @param hi Right border
      */
     template<typename T, size_t SIZE>
-    void insertionSort(std::array<T, SIZE> &a, size_t left, size_t right) {
-        for (size_t i = left + 1; i < right; i++)
-            for (size_t j = i; j > 0 && a[j - 1] > a[j]; j--)
+    void insertionSort(std::array<T, SIZE> &a, size_t lo, size_t hi) {
+        for (size_t i = lo + 1; i < hi; i++)
+            for (size_t j = i; j > lo && a[j - 1] > a[j]; j--)
                 std::swap(a[j], a[j - 1]);
 
     }

@@ -11,27 +11,27 @@ namespace opl {
      *
      * @param a Array with values
      * @param aux Cache array
-     * @param left left border
-     * @param middle middle of sub-arrays
-     * @param right right border
+     * @param lo left border
+     * @param mid middle of sub-arrays
+     * @param hi right border
      */
     template<typename T, size_t SIZE>
-    void bionicMerge(std::array<T, SIZE> &a, std::array<T, SIZE> &aux, size_t left, size_t middle, size_t right) {
-        size_t i = left,
-                j = right,
-                k = left;
+    void bionicMerge(std::array<T, SIZE> &a, std::array<T, SIZE> &aux, size_t lo, size_t mid, size_t hi) {
+        size_t i = lo,
+                j = hi,
+                k = lo;
 
         // Copy the front half ascending.
-        while (i <= middle)
+        while (i <= mid)
             aux[k++] = a[i++];
 
         // Copy the back half descending.
-        while (j > middle)
+        while (j > mid)
             aux[k++] = a[j--];
 
-        i = left;
-        j = right;
-        k = left;
+        i = lo;
+        j = hi;
+        k = lo;
 
         while (i <= j) {
             if (aux[i] <= aux[j])
@@ -52,11 +52,11 @@ namespace opl {
     void bottomUpMergeSort(std::array<T, SIZE> &a) {
         std::array<T, SIZE> *aux = new std::array<T, SIZE>();
 
-        for (size_t length = 1; length < SIZE; length *= 2)
-            for (size_t left = 0; left < SIZE - length; left += length + length) {
-                size_t middle = left + length - 1;
-                size_t right = std::min(left + length + length - 1, SIZE - 1);
-                bionicMerge(a, *aux, left, middle, right);
+        for (size_t len = 1; len < SIZE; len *= 2)
+            for (size_t lo = 0; lo < SIZE - len; lo += len + len) {
+                size_t mid = lo + len - 1;
+                size_t hi = std::min(lo + len + len - 1, SIZE - 1);
+                bionicMerge(a, *aux, lo, mid, hi);
             }
 
         delete aux;
