@@ -45,8 +45,8 @@ namespace opl {
             for (size_t j = i + nElementsInCacheLine; j > nElementsInCacheLine;) {
                 j -= nElementsInCacheLine;
                 __builtin_prefetch(&a[j - nElementsInCacheLine]);
-                for (size_t k = 0; j - k >= 1 && a[j - 1 - k] > a[j - k] && k < nElementsInCacheLine; k++)
-                    std::swap(a[j - 1 - k], a[j - k]);
+                for(size_t k = j; k > 0  && a[k - 1] > a[k]; k--)
+                    std::swap(a[k], a[k-1]);
             }
     }
 

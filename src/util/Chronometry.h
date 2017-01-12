@@ -40,12 +40,12 @@ namespace opl {
 
     template<size_t SIZE, size_t N>
     struct Algorithms {
-        static constexpr std::array<void (*)(std::array<double, SIZE> &), 3> data = {
+        static constexpr std::array<void (*)(std::array<double, SIZE> &), 5> data = {
 //                opl::selectionSort,
 //                opl::selectionSortOptimized,
 //                opl::selectionSortWithPrefetch,
-//                opl::insertionSort,
-//                opl::insertionSortWithPrefetch,
+                opl::insertionSort,
+                opl::insertionSortWithPrefetch,
                 opl::bottomUpMergeSort,
                 opl::quickSort,
                 opl::quickSortHybrid
@@ -61,7 +61,7 @@ namespace opl {
     };
 
     template<size_t SIZE>
-    struct Algorithms<SIZE, 3> {
+    struct Algorithms<SIZE, 5> {
         static void execute(std::array<double, SIZE> &a) {}
     };
 
