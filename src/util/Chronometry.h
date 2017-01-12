@@ -78,8 +78,8 @@ namespace opl {
         }
     };
 
-    template<>//opl::constant::max_array_size
-    struct Chronometry<16777216> {
+    template<>
+    struct Chronometry<opl::constant::max_array_size> {
         static void execute() {}
     };
 

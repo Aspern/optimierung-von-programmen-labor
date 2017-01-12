@@ -28,7 +28,7 @@ namespace opl {
         /**
          * The minimum size of elements that has effect on the runtime environment.
          */
-        const size_t min_array_size = 16384;
+        const size_t min_array_size = 16777216;
 
         /**
          * The size of elements that are no more executable on the runtime environment.
