@@ -23,7 +23,7 @@ namespace opl {
          * If this number of elements is reached in a sub-array of a quick sort execution,
          * the algorithm becomes inefficient.
          */
-        const int quick_sort_cutt_off = 10;
+        const int quick_sort_cutt_off = 9;
 
         /**
          * The minimum size of elements that has effect on the runtime environment.

@@ -2,9 +2,7 @@
 
 int main() {
 
-    Result *result = new Result();
-    opl::Chronometry<opl::constant::min_array_size>::execute(*result);
-    delete result;
+    opl::Chronometry<opl::constant::min_array_size>::execute();
 
     return 0;
 }
