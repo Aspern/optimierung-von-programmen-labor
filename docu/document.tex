@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper,abstracton]{scrartcl}	
+
+%---------BEGIN General-Packages---------
+\usepackage[utf8]{inputenc}
+\usepackage{german}
+\usepackage{amsmath} 
+\usepackage[onehalfspacing]{setspace}
+\usepackage{graphicx}
+\usepackage{color}
+%----------END General-Packages----------
+
+%---------BEGIN Listing-Packages---------
+\usepackage{listings}
+\usepackage{inconsolata}
+%----------END Listing-Packages----------
+
+%----------BEGIN Table-Packages----------
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage{multirow}
+%----------END Table-Packages------------
+
+%----------BEGIN Hack-Packages-----------
+\usepackage{scrhack}
+%-----------END Hack-Packages------------
+
+
+%Aktiviere Umlaute für Listings
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+
+
+
+%Definition von Farben
+\definecolor{darkblue}{rgb}{0,0,.75}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+
+%Einstellungen für Pseudocode
+\lstloadlanguages{Matlab}
+\lstnewenvironment{PseudoCode}[1][]{
+	\lstset{
+		language=Matlab,
+		morekeywords={from,to,do,then},
+		basicstyle=\scriptsize\ttfamily,
+		keywordstyle=\color{darkblue}\ttfamily,
+		aboveskip=1.5em,
+		belowskip=1.5em,
+		tabsize=3,
+		numbers=left,
+		numberstyle=\color{grey},
+		xleftmargin=5.0ex
+	}
+}{}
+
+% Zeigt nur Section/Subsection im Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+
+\begin{document}
+	
+	\include{titlepage}	
+	\tableofcontents
+	\newpage
+	
+	\input{systemenvironment}
+	\newpage
+	
+	\input{measurement}
+	\newpage
+	
+	\input{algorithm/algorithm}
+		\input{algorithm/minimumsearch}
+		\newpage
+		\input{algorithm/selectionsort}
+		\newpage
+		\input{algorithm/insertionsort}
+		\newpage
+		\input{algorithm/mergesort}
+		\newpage
+		\input{algorithm/quicksort}
+		\newpage
+	
+	\input{result/result}
+		\input{result/minimumsearch}
+		\newpage
+		\input{result/selectionsort}
+		\newpage
+		\input{result/insertionsort}
+		\newpage
+		\input{result/mergesort}
+		\newpage
+		\input{result/quicksort}
+	
+	\flushleft
+	%\bibliography{sources}	
+\end{document}

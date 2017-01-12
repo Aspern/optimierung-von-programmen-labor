@@ -7,3 +7,9 @@ bin/
 .idea/
 cmake-build-debug/
 src/cmake-build-debug/
+
+# LAtex
+*.aux
+*.log
+*.gz
+*.toc

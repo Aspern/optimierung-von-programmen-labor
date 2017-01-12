@@ -1,0 +1,167 @@
+\section{Zeitmessung: Ergebnisse und Interpretation}
+
+\subsection{Minimumsuche}
+
+\subsubsection{Variante 1: Normal}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$\mu s$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 30 & 29 & 29\\
+		\hline
+		32768 & 54 & 61 & 58\\
+		\hline
+		65536 & 111 & 123 & 108\\
+		\hline
+		131072 & 233 & 232 & 213\\
+		\hline
+		262144 & 421 & 479 & 425\\
+		\hline
+		524288 & 880 & 886 & 903\\
+		\hline
+		1048576 & 1740 & 1737 & 1743\\
+		\hline
+		2097152 & 3764 & 3751 & 3566\\
+		\hline
+		4194304 & 6926 & 6951 & 7049\\
+		\hline
+		8388608 & 13348 & 13548 & 13558\\
+		\hline
+		16777216 & 27043 & 27975 & 28325\\
+		\hline
+		33554432 & 55425 & 53431 & 54039\\
+		\hline
+		67108864 & 109768 & 106431 & 108913\\
+		\hline
+		134217728 & 202659 & 206078 & 204265\\
+		\hline
+		268435456 & 409796 & 400175 & 444034\\
+		\hline
+		536870912 & 1077360 & 961671 & 955176\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Normale Minimumsuche.}
+		\label{tab:minimumsearch-v1}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Variante 2: Mit Schleifen ausrollen}
+
+Bei dieser Variante wird die Minimum in zwei Schleifen implementiert. Die erste Schleife iteriert über Blöcke, welche die Größe einer Cache-Line haben. Die innere Schleife iteriert anschließend über die Elemente dieses Blocks. Dies hat den Effekt, dass der Compiler die innere Schleifen ausrollt.
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$\mu s$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 31 & 30 & 28\\
+		\hline
+		32768 & 58 & 64 & 59\\
+		\hline
+		65536 & 106 & 108 & 109\\
+		\hline
+		131072 & 216 & 233 & 230\\
+		\hline
+		262144 & 426 & 441 & 443\\
+		\hline
+		524288 & 901 & 914 & 889\\
+		\hline
+		1048576 & 1746 & 1758 & 1773\\
+		\hline
+		2097152 & 3530 & 3518 & 3513\\
+		\hline
+		4194304 & 7045 & 7041 & 7035\\
+		\hline
+		8388608 & 13597 & 13635 & 14096\\
+		\hline
+		16777216 & 27933 & 28018 & 27096\\
+		\hline
+		33554432 & 53879 & 55001 & 52187\\
+		\hline
+		67108864 & 104367 & 101978 & 104117\\
+		\hline
+		134217728 & 216644 & 216945 & 215795\\
+		\hline
+		268435456 & 444691 & 460349 & 466158\\
+		\hline
+		536870912 & 840530 & 813142 & 899364\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Minimumsuche mit Schleifen ausrollen}
+		\label{tab:minimumsearch-v2}
+	\end{longtable}
+\end{center}
+
+\newpage
+
+\subsubsection{Variante 3: Mit Prefetch}
+
+Diese Variante verwendet die vorgegebene Funktion \texttt{\_\_builtin\_prefetch(adr)} des C++ Compilers. Wie bei der Minimumsuche in Abschnitt 3.2, wird das Array hier in zwei Schleifen durchlaufen. Im Gegensatz zu der Variante vorher wird mit Hilfe der Compilerfunktion zusätzlich ein Prefetch auf die nächste Cache-Line erzeugt.
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$\mu s$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 26 & 27 & 26\\
+		\hline
+		32768 & 57 & 54 & 53\\
+		\hline
+		65536 & 98 & 99 & 97\\
+		\hline
+		131072 & 197 & 196 & 198\\
+		\hline
+		262144 & 395 & 397 & 395\\
+		\hline
+		524288 & 841 & 831 & 831\\
+		\hline
+		1048576 & 1617 & 1614 & 1617\\
+		\hline
+		2097152 & 3286 & 3280 & 3286\\
+		\hline
+		4194304 & 6532 & 6412 & 6376\\
+		\hline
+		8388608 & 12936 & 12353 & 12426\\
+		\hline
+		16777216 & 25763 & 26332 & 25283\\
+		\hline
+		33554432 & 50038 & 49740 & 52096\\
+		\hline
+		67108864 & 98898 & 106837 & 103934\\
+		\hline
+		134217728 & 203489 & 198460 & 199950\\
+		\hline
+		268435456 & 408708 & 381526 & 407902\\
+		\hline
+		536870912 & 834184 & 831809 & 1117660\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Minimumsuche mit Prefetch.}
+		\label{tab:minimumsearch-v3}
+	\end{longtable}
+\end{center}
+
+\newpage
+
+\subsection{Interpretation der Ergebnisse}
+
+Bei genauerer Betrachtung der Tabellen \ref{tab:minimumsearch-v1}, \ref{tab:minimumsearch-v2} und \ref{tab:minimumsearch-v3} sind zunächst keine großen Unterschiede zu erkennen. Die Laufzeit wächst, wie erwartet, konstant mit der Feldgröße. Auch zwischen den unterschiedlichen Varianten der Array-Befüllung sind keine nennenswerten Auswirkungen auf die Laufzeit festzustellen, da in jedem Fall immer alle Elemente untersucht werden müssen.
+
+Zwischen der normalen Minimumsuche und der Variante mit Schleifen ausrollen sind können keine Unterschiede in der Laufzeit festgestellt werden; allein die Variante mit Prefetch zeigt einen kleinen Gewinn bei der Laufzeit.
+\newpage

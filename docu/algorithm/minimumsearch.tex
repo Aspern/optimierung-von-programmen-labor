@@ -1,0 +1,42 @@
+\subsection{Minimumsuche}
+
+Die Minimumsuche sucht das kleinste Element in einer Menge von vergleichbaren Elementen und gibt dieses zurück. Dabei müssen alle Elemente mindestens einmal betrachtet werden, was eine Laufzeit von $O(n)$ zur Folge hat. Der nachfolgende Pseudocode verdeutlicht die Vorgehensweise des Algorithmus.
+
+\begin{PseudoCode}
+A := array with comparable elements;
+minimum = A[0];
+for i = 1 to n do
+	if minimum > A[i] then
+		minimum = A[i];
+	end if
+	i := i + 1;
+end for
+\end{PseudoCode}
+
+\noindent
+\textbf{Beispiel 3.1.1 - Ausführung der Minimumsuche}
+
+\noindent
+Für die Ausführung des Algorithmus wird das Array $A$, eine Variable $minimum$ und eine Zählvariable $i$ wie folgt initialisiert. 
+\begin{equation}
+	A := \{\textcolor{red}{7}, \textcolor{blue}{4}, 17, 1, 6, 7\},\;minimum := A[0] = 7,\;i := 1
+\end{equation}
+
+\noindent
+Im ersten Schritt der Schleife wird nun die Stelle $A[i]$ (blau) mit dem aktuellen Minimum (rot) verglichen. Ist die Stelle $A[i]$ größer als das aktuelle Minimum, wird dieses aktualisiert. Das ganze wiederholt sich, bis jedes Element einmal betrachtet wurde. Nachfolgend der Zustand der Variablen in Zeile vier der Minimumsuche.
+
+\begin{equation}
+	\begin{split}
+		A = \{\textcolor{red}{7}, \textcolor{blue}{4}, 17, 1, 6, 7\},\;minimum = 7,\;i = 1 \\
+		A = \{7, \textcolor{red}{4}, \textcolor{blue}{17}, 1, 6, 7\},\;minimum = 4,\;i = 2 \\
+		A = \{7, 4, \textcolor{red}{17}, \textcolor{blue}{1}, 6, 7\},\;minimum = 4,\;i = 3 \\
+		A = \{7, 4, 17, \textcolor{red}{1}, \textcolor{blue}{6}, 7\},\;minimum = 1,\;i = 4 \\
+		A = \{7, 4, 17, 1, \textcolor{red}{6}, \textcolor{blue}{7}\},\;minimum = 1,\;i = 5 
+	\end{split}
+\end{equation}
+
+\newpage
+
+
+
+

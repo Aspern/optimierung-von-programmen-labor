@@ -1,0 +1,105 @@
+\subsection{Sortieren durch direkte Auswahl}
+
+Die nachfolgenden Tabellen zeigen die Laufzeiten von drei verschiedenen Varianten von\textit{Sortieren durch direkte Auswahl}. Dabei wird bei jeder Variante eine andere Implementierung der Minimumsuche (siehe Abschnitt oben) verwendet.
+
+\subsubsection{Variante 1: Normal}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 242 & 248 & 250\\
+		\hline
+		32768 & 977 & 970 & 968\\
+		\hline
+		65536 & 3761 & 3768 & 3765\\
+		\hline
+		131072 & 15548 & 15534 & 15539\\
+		\hline
+		262144 & 62171 & 62314 & 62207\\
+		\hline
+		524288 & 252007 & 258822 & 251515\\
+		\hline
+		1048576 & 1052480 & 1027300 & 1028070\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch direkte Auswahl mit normaler Minimumsuche.}
+		\label{tab:selectionsort-v1}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Variante 2: Mit Schleifen Ausrollen}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 158 & 157 & 156\\
+		\hline
+		32768 & 638 & 638 & 636\\
+		\hline
+		65536 & 2871 & 4280 & 2551\\
+		\hline
+		131072 & 10134 & 10148 & 10152\\
+		\hline
+		262144 & 40565 & 40554 & 40590\\
+		\hline
+		524288 & 162909 & 162888 & 165314\\
+		\hline
+		1048576 & 698178 & 678409 & 693544\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren mit Minimumsuche und Schleifen ausrollen.}
+		\label{tab:selectionsort-v2}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Variante 3: Mit Prefetch}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 166 & 164 & 163\\
+		\hline
+		32768 & 632 & 633 & 630\\
+		\hline
+		65536 & 2533 & 2531 & 2538\\
+		\hline
+		131072 & 10128 & 10127 & 10150\\
+		\hline
+		262144 & 40515 & 40519 & 40549\\
+		\hline
+		524288 & 162415 & 162706 & 162673\\
+		\hline
+		1048576 & 713851 & 696861 & 697996\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren mit Minimumsuche und Prefetch}
+		\label{tab:selectionsort-v3}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Interpretation}
+
+Die Laufzeit aller drei Varianten von \textit{Sortieren durch direkte Auswahl} wächst exponentiell, also mit $O(n^2)$. Ein deutlicher Unterschied zeigt sich insbesondere zwischen der Variante mit normaler Minimumsuche und den beiden optimierten Varianten. Die Minimumsuche mit Schleifen ausrollen beziehungsweise mit Prefetch bringen hier einen Zeitvorteil von ca. 34\%.
+
+Vergleicht man dagegen Die Laufzeiten der beiden optimierten Varianten, lässt sich hier keinen Unterschied feststellen. Im vorherigen Kapitel wurde bei der Variante mit Prefetch ein kleiner Vorteil festgestellt, dieser lässt sich bei der Verwendung im Sortierverfahren nicht wieder finden.

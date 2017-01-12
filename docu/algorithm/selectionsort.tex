@@ -1,0 +1,73 @@
+\subsection{Sortieren durch direkte Auswahl}
+
+Der Algorithmus \textit{Sortieren durch direkte Auswahl} (englisch Selectionsort) sortiert ein Array von Elementen in aufsteigender Reihenfolge. Dabei sucht der Algorithmus das kleinste Element im Array und vertuscht es mit der ersten Stelle im Array. Anschließend wird im Array ohne die erste Stelle erneut das Minimum gesucht und an die zweite Stelle getauscht. So entsteht ein sortierter Teil $S$ und ein unsortierter Teil $U$ im Array. Der Algorithmus fährt solange fort, bis in $U$ keine Elemente mehr vorhanden sind. Der Algorithmus liegt in der Komplexitätsklasse $O(n^2)$.
+
+\begin{PseudoCode}
+A := array with comparable elements;
+for i = 0 to n - 1 do
+	minimum = searchMin(A, i);
+	switch(A[i], minimum);
+end for
+\end{PseudoCode}
+
+\noindent
+\textbf{Beispiel 3.2.1 - Ausführung Sortieren durch direkte Auswahl}
+
+\noindent
+Für die Ausführung des Algorithmus wird das Array $A$ und eine Zählvariable $i$ initialisiert. Zur Verdeutlichung werden wird $i$ blau und das aktuell gefundene Minimum rot markiert. Der bereits sortierte Teil des Arrays wird grün markiert
+\begin{equation}
+	A := \{7, 4, 17, 1, 6, 7\},\;i:=0
+\end{equation}
+\noindent
+Der Algorithmus startet bei $A[0] = 7$, dazu wird im Bereich $A[0] - A[5]$ das Minimum $1$ gefunden.
+\begin{equation}
+	A = \{\textcolor{red}{7}, 4, 17, \textcolor{blue}{1}, 6, 7\},\;i = 0 \\
+\end{equation}
+\noindent
+Anschließend wird das Minimum mit dem aktuellen Index vertauscht, da $7 > 1$.
+\begin{equation}
+	A = \{\textcolor{green}{1}, 4, 17, 7, 6, 7\},\;i = 0 \\
+\end{equation}
+\noindent
+Nach dem vertauschen startet der nächste Schleifendurchlauf mit $A[1] = 4$.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{red}{4}, 17, 7, 6, 7\},\;i = 1 \\
+\end{equation}
+\noindent
+In diesem Fall muss nicht getauscht werden da $4$ bereits das Minimum ist.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, 17, 7, 6, 7\},\;i = 1 \\
+\end{equation}
+\newpage
+\noindent
+Im nächsten Schritt wird A[2] = 17 mit dem gefundenen Minimum $6$ aus $A[2] - A[5]$ behandelt.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{red}{17}, 7, \textcolor{blue}{6}, 7\},\;i = 2 \\
+\end{equation}
+\noindent
+Wieder wird vertauscht, da $17 > 6$.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6}, 7, 17, 7\},\;i = 2 \\
+\end{equation}
+\noindent
+Für $A[3] = 7$ wird kein Minimum gefunden, da $7$ bereits das kleinste Element ist.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, 17, 7\},\;i = 3 \\
+\end{equation}
+\noindent
+Anschließend werden noch $A[4] = 17$ mit dem letzten Minimum $7$ aus $A[4] - A[5]$ betrachtet.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, \textcolor{red}{17}, \textcolor{blue}{7}\},\;i = 4 \\
+\end{equation}
+\noindent
+Die Elemente werden vertauscht, da $17 > 7$.
+\begin{equation}
+	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, \textcolor{green}{7}, \textcolor{green}{17}\},\;i = 4 \\
+\end{equation}
+\noindent
+Anschließend terminiert der Algorithmus, dass letzte Element muss nicht mehr geprüft werden, da es bereits im letzte Schritt behandelt wurde. 
+
+\newpage
+
+
+

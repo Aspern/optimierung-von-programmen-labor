@@ -1,0 +1,15 @@
+\section{Hinweise zur Zeitmessung}
+
+In diesem Projektbericht werden für verschiedene Algorithmen Zeitmessungen vorgenommen und tabellarisch dokumentiert. Alle Messungen finden unter den Bedingungen der in Kapitel 1 beschriebenen Systemumgebung statt. Zusätzlich gelten für die Zeitmessung folgende Vorgaben.
+
+\begin{itemize}
+	\item Zeitmessungen werden mit dem Datentyp \texttt{double} durchgeführt.
+	\item Für die Messungen wird die Bibliothek \texttt{std::chrono} in C++ verwendet.
+	\item Die Feldgrößen entsprechen einer 2er-Potenz und werden solange verdoppelt, bis der Hauptspeicher nicht mehr ausreicht. Gestartet wird mit der Feldgröße  $n := 65536$.
+	\item Es gibt insgesamt drei Testszenarien für die Zeitmessung.
+	\begin{itemize}
+		\item Der Algorithmus wird mit einer aufsteigen sortierten Folge getestet (In den Tabellen mit \texttt{ASC} bezeichnet).
+		\item Der Algorithmus wird mit einer absteigend sortierten Folge getestet (In den Tabellen mit \texttt{DESC} bezeichnet).
+		\item Der Algorithmus wird mit einer folge von generierten Zufallszahlen getestet (In den Tabellen mit \texttt{RAND} bezeichnet).
+	\end{itemize}
+\end{itemize}
