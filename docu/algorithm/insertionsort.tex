@@ -15,80 +15,80 @@ Der Algorithmus \textit{Sortieren durch Einfügen} (englisch Insertionsort) sort
 
 \noindent
 Für die Ausführung des Algorithmus wird das Array $A$ und zwei Zählvariablen $i$ und $j$ initialisiert. Zur Verdeutlichung wird $i$ blau, $j$ und $j-1$ rot und der bereits sortierte Teil des Arrays grün dargestellt.
-\begin{equation}
+\begin{equation*}
 	A := \{7, 4, 17, 1, 6, 7\},\;i:=1,\;j:=0
-\end{equation}
+\end{equation*}
 \noindent
 Der Algorithmus startet mit $i=1$ bei $A[1] = 4$ in der äußeren Schleife
-\begin{equation}
+\begin{equation*}
 	A = \{7, \textcolor{blue}{4}, 17, 1, 6, 7\},\;i = 1,\;j=0 \\
-\end{equation}
+\end{equation*}
 \noindent
 In der inneren Schleife wird $j = i = 1$ gesetzt und  $A[j] mit A[j - 1]$ verglichen.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{red}{7}, \textcolor{red}{4}, 17, 1, 6, 7\},\;i = 1,\;j=1 \\
-\end{equation}
+\end{equation*}
 \noindent
 Da $7 > 4$ werden die beiden Elemente vertauscht und $j$ anschließend dekrementiert.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{red}{4}, 7, 17, 1, 6, 7\},\;i = 1,\;j=0 \\
-\end{equation}
+\end{equation*}
 \noindent
 Da $j=0$ wird die innere Schleife abgebrochen und mit der äußeren fortgefahren.
-\begin{equation}
+\begin{equation*}
 	A = \{4, 7, \textcolor{blue}{17}, 1, 6, 7\},\;i = 2,\;j=0 \\
-\end{equation}
+\end{equation*}
 \noindent
 Anschließend wird wieder die innere Schleife mit $j=i=2$ ausgeführt.
-\begin{equation}
+\begin{equation*}
 	A = \{4, \textcolor{red}{7}, \textcolor{red}{17}, 1, 6, 7\},\;i = 2,\;j=2 \\
-\end{equation}
+\end{equation*}
 \noindent
 Da bereits $7 < 17$ muss nicht getauscht werden und die innere Schleife wird abgebrochen.
-\begin{equation}
+\begin{equation*}
 	A = \{4, 7, 17, \textcolor{blue}{1}, 6, 7\},\;i = 3,\;j=2 \\
-\end{equation}
+\end{equation*}
 \noindent
 Die innere Schleife wird jetzt mit $j=i=3$ ausgeführt. Da $17 > 1$ werden die Elemente $A[j]$ mit $A[j-1]$ vertauscht. Das wiederholt sich bis $j=0$, da außerdem $7 > 1$ und $4>1$. Anschließend terminiert die innere Schleife wegen $j=0$.
-\begin{equation}
+\begin{equation*}
 	\begin{split}
 		A = \{4, 7,  \textcolor{red}{17}, \textcolor{red}{1}, 6, 7\},\;i = 3,\;j=3 \\
 		A = \{4, \textcolor{red}{7},  \textcolor{red}{1}, 17, 6, 7\},\;i = 3,\;j=2 \\
 		A = \{\textcolor{red}{4}, \textcolor{red}{1},  7, 17, 6, 7\},\;i = 3,\;j=1 \\
 		A = \{\textcolor{red}{1}, 4,  7, 17, 6, 7\},\;i = 3,\;j=0 \\
 	\end{split}
-\end{equation}
+\end{equation*}
 \noindent
 Die äußere Schleife wird jetzt mit $i=4$ fortgesetzt.
-\begin{equation}
+\begin{equation*}
 	A = \{1,4,7,17,\textcolor{blue}{6},7\},\;i = 4,\;j=0 \\
-\end{equation}
+\end{equation*}
 \noindent
 Die innere Schleife wird dann mit $j=i=4$ ausgeführt. Da $17 > 6$ werden die Elemente $A[j]$ mit $A[j-1]$ vertauscht. Das wiederholt sich bis $j=2$, da außerdem $7 > 6$. Anschließend terminiert die innere Schleife wegen $A[j-1] < A[j]$.
-\begin{equation}
+\begin{equation*}
 	\begin{split}
 		A = \{1, 4, 7, \textcolor{red}{17}, \textcolor{red}{6}, 7\},\;i = 4,\;j=4 \\
 		A = \{1, 4, \textcolor{red}{7}, \textcolor{red}{6}, 17, 7\},\;i = 4,\;j=3 \\
 		A = \{1, \textcolor{red}{4}, \textcolor{red}{6}, 7, 17, 7\},\;i = 4,\;j=2 \\
 	\end{split}
-\end{equation}
+\end{equation*}
 \noindent
 Die äußere Schleife wird mit dem letzten Element $i=5$ fortgesetzt.
-\begin{equation}
+\begin{equation*}
 	A = \{1,4,6,7,17,\textcolor{blue}{7}\},\;i = 4,\;j=2 \\
-\end{equation}
+\end{equation*}
 \newpage
 \noindent
 Die innere Schleife startet bei $j=i=5$ und vergleicht $A[j-1]$ mit $A[j]$. Da $17 > 7$ werden die Elemente vertauscht, danach bricht die Schleife ab da $A[j-1] = A[j]$.
-\begin{equation}
+\begin{equation*}
 	\begin{split}
 		A = \{1,4,6,7,\textcolor{red}{17},\textcolor{red}{7}\},\;i = 4,\;j=3 \\
 		A = \{1,4,6,\textcolor{red}{7},\textcolor{red}{7}, 17\},\;i = 4,\;j=3 \\
 	\end{split}
-\end{equation}
+\end{equation*}
 \noindent
 Anschließend Terminiert die äußere Schleife wegen $i = N$ und der Algorithmus ist fertig.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1},\textcolor{green}{4},\textcolor{green}{6},\textcolor{green}{7},\textcolor{green}{7},\textcolor{green}{17}\},\;i = 4,\;j=2 \\
-\end{equation}
+\end{equation*}
 \newpage

@@ -15,55 +15,55 @@ end for
 
 \noindent
 Für die Ausführung des Algorithmus wird das Array $A$ und eine Zählvariable $i$ initialisiert. Zur Verdeutlichung werden wird $i$ blau und das aktuell gefundene Minimum rot markiert. Der bereits sortierte Teil des Arrays wird grün markiert
-\begin{equation}
+\begin{equation*}
 	A := \{7, 4, 17, 1, 6, 7\},\;i:=0
-\end{equation}
+\end{equation*}
 \noindent
 Der Algorithmus startet bei $A[0] = 7$, dazu wird im Bereich $A[0] - A[5]$ das Minimum $1$ gefunden.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{red}{7}, 4, 17, \textcolor{blue}{1}, 6, 7\},\;i = 0 \\
-\end{equation}
+\end{equation*}
 \noindent
 Anschließend wird das Minimum mit dem aktuellen Index vertauscht, da $7 > 1$.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, 4, 17, 7, 6, 7\},\;i = 0 \\
-\end{equation}
+\end{equation*}
 \noindent
 Nach dem vertauschen startet der nächste Schleifendurchlauf mit $A[1] = 4$.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{red}{4}, 17, 7, 6, 7\},\;i = 1 \\
-\end{equation}
+\end{equation*}
 \noindent
 In diesem Fall muss nicht getauscht werden da $4$ bereits das Minimum ist.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, 17, 7, 6, 7\},\;i = 1 \\
-\end{equation}
+\end{equation*}
 \newpage
 \noindent
 Im nächsten Schritt wird A[2] = 17 mit dem gefundenen Minimum $6$ aus $A[2] - A[5]$ behandelt.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{red}{17}, 7, \textcolor{blue}{6}, 7\},\;i = 2 \\
-\end{equation}
+\end{equation*}
 \noindent
 Wieder wird vertauscht, da $17 > 6$.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6}, 7, 17, 7\},\;i = 2 \\
-\end{equation}
+\end{equation*}
 \noindent
 Für $A[3] = 7$ wird kein Minimum gefunden, da $7$ bereits das kleinste Element ist.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, 17, 7\},\;i = 3 \\
-\end{equation}
+\end{equation*}
 \noindent
 Anschließend werden noch $A[4] = 17$ mit dem letzten Minimum $7$ aus $A[4] - A[5]$ betrachtet.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, \textcolor{red}{17}, \textcolor{blue}{7}\},\;i = 4 \\
-\end{equation}
+\end{equation*}
 \noindent
 Die Elemente werden vertauscht, da $17 > 7$.
-\begin{equation}
+\begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, \textcolor{green}{6},\textcolor{green}{7}, \textcolor{green}{7}, \textcolor{green}{17}\},\;i = 4 \\
-\end{equation}
+\end{equation*}
 \noindent
 Anschließend terminiert der Algorithmus, dass letzte Element muss nicht mehr geprüft werden, da es bereits im letzte Schritt behandelt wurde. 
 

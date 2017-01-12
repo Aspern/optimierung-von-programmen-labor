@@ -18,14 +18,14 @@ end for
 
 \noindent
 Für die Ausführung des Algorithmus wird das Array $A$, eine Variable $minimum$ und eine Zählvariable $i$ wie folgt initialisiert. 
-\begin{equation}
+\begin{equation*}
 	A := \{\textcolor{red}{7}, \textcolor{blue}{4}, 17, 1, 6, 7\},\;minimum := A[0] = 7,\;i := 1
-\end{equation}
+\end{equation*}
 
 \noindent
 Im ersten Schritt der Schleife wird nun die Stelle $A[i]$ (blau) mit dem aktuellen Minimum (rot) verglichen. Ist die Stelle $A[i]$ größer als das aktuelle Minimum, wird dieses aktualisiert. Das ganze wiederholt sich, bis jedes Element einmal betrachtet wurde. Nachfolgend der Zustand der Variablen in Zeile vier der Minimumsuche.
 
-\begin{equation}
+\begin{equation*}
 	\begin{split}
 		A = \{\textcolor{red}{7}, \textcolor{blue}{4}, 17, 1, 6, 7\},\;minimum = 7,\;i = 1 \\
 		A = \{7, \textcolor{red}{4}, \textcolor{blue}{17}, 1, 6, 7\},\;minimum = 4,\;i = 2 \\
@@ -33,7 +33,7 @@ Im ersten Schritt der Schleife wird nun die Stelle $A[i]$ (blau) mit dem aktuell
 		A = \{7, 4, 17, \textcolor{red}{1}, \textcolor{blue}{6}, 7\},\;minimum = 1,\;i = 4 \\
 		A = \{7, 4, 17, 1, \textcolor{red}{6}, \textcolor{blue}{7}\},\;minimum = 1,\;i = 5 
 	\end{split}
-\end{equation}
+\end{equation*}
 
 \newpage
 
