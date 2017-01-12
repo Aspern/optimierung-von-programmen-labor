@@ -23,7 +23,7 @@ set(SOURCE_FILES main.cpp
         src/runtime/Constants.h
         src/util/Chronometry.h
         src/util/ArrayTools.h
-        src/util/Result.h)
+)
 
 add_executable(opl ${SOURCE_FILES})
 
