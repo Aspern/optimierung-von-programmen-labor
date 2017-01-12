@@ -2,4 +2,36 @@
 
 Nachfolgende Tabelle zeigt die Laufzeit des \textit{Bottom-Up Mergesort} Algorithmus.
 
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		1048576 & 118 & 121 & 122\\
+		\hline
+		2097152 & 249 & 254 & 253\\
+		\hline
+		4194304 & 520 & 530 & 530\\
+		\hline
+		8388608 & 1097 & 1116 & 1113\\
+		\hline
+		16777216 & 2285 & 2347 & 2307\\
+		\hline
+		33554432 & 4753 & 4808 & 4793\\
+		\hline
+		67108864 & 9860 & 9934 & 9947\\
+		\hline
+		134217728 & 20679 & 20721 & 20647\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch Einfügen mit Prefetch.}
+		\label{tab:insertionsort-v2}
+	\end{longtable}
+\end{center}
+
 \subsubsection{Interpretation}

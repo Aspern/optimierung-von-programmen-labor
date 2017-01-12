@@ -28,12 +28,12 @@ namespace opl {
         /**
          * The minimum size of elements that has effect on the runtime environment.
          */
-        const size_t min_array_size = 16384;
+        const size_t min_array_size = 1048576;
 
         /**
          * The size of elements that are no more executable on the runtime environment.
          */
-        const size_t max_array_size = 2097152;
+        const size_t max_array_size = 137438953472;
 
     }
 }

@@ -3,5 +3,71 @@
 Nachfolgend werden die Laufzeiten von zwei Variante des \textit{Quicksort} Algorithmus verglichen. Einmal wird der Quicksort mit Three-Way-Partitioning, das zweite mal Hybrid implementiert.
 
 \subsubsection{Variante 1: Three-Way-Partitioning}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		1048576 & 24 & 26 & 111\\
+		\hline
+		2097152 & 50 & 54 & 238\\
+		\hline
+		4194304 & 105 & 114 & 497\\
+		\hline
+		8388608 & 218 & 239 & 1064\\
+		\hline
+		16777216 & 458 & 498 & 2189\\
+		\hline
+		33554432 & 950 & 1021 & 4601\\
+		\hline
+		67108864 & 1977 & 2139 & 9435\\
+		\hline
+		134217728 & 4129 & 4420 & 20014\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch Einfügen mit Prefetch.}
+		\label{tab:insertionsort-v2}
+	\end{longtable}
+\end{center}
+
 \subsubsection{Variante 2: Hybrid}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		1048576 & 111 & 113 & 165\\
+		\hline
+		2097152 & 238 & 240 & 347\\
+		\hline
+		4194304 & 501 & 510 & 728\\
+		\hline
+		8388608 & 1067 & 1078 & 1552\\
+		\hline
+		16777216 & 2248 & 2278 & 3247\\
+		\hline
+		33554432 & 4722 & 4776 & 6675\\
+		\hline
+		67108864 & 9893 & 10055 & 14204\\
+		\hline
+		134217728 & 21060 & 21035 & 29604\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch Einfügen mit Prefetch.}
+		\label{tab:insertionsort-v2}
+	\end{longtable}
+\end{center}
+
 \subsubsection{Interpretation}

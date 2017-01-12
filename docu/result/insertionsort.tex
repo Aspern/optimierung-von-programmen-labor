@@ -3,5 +3,67 @@
 Die nachfolgenden Laufzeiten vergleichen zwei unterschiedliche Implementierungen des Algorithmus \textit{Sortieren durch Einfügen}. In der ersten Variante wird mit zwei Schleifen sortiert, in der zweiten Abwandlung wird die innere Schleife ausgerollt und ein Prefetch-Befehl verwendet.
 
 \subsubsection{Variante 1: Normal}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 0 & 282 & 139\\
+		\hline
+		32768 & 0 & 1113 & 554\\
+		\hline
+		65536 & 0 & 4525 & 2256\\
+		\hline
+		131072 & 0 & 18043 & 9026\\
+		\hline
+		262144 & 0 & 72410 & 36246\\
+		\hline
+		524288 & 0 & 290495 & 144620\\
+		\hline
+		1048576 & 1 & 1190247 & 587934\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch Einfügen (Normal).}
+		\label{tab:insertionsort-v1}
+	\end{longtable}
+\end{center}
+
 \subsubsection{Variante 2: Mit Prefetch}
+
+\begin{center}
+	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		
+		% Tabelleninhalt
+		\multirow{2}{5cm}{\centering \textbf{Feldgröße [n]}} & \multicolumn{3}{|c|}{ \textbf{Laufzeit [$ms$]}} \\\cline{2-4}
+		& \multicolumn{1}{|c|}{\textbf{ASC}} & \multicolumn{1}{|c|}{\textbf{DESC}} &\multicolumn{1}{|c|}{\textbf{RAND}} \\
+		\hhline{|=|=|=|=|}
+		
+		16384 & 19 & 162 & 91\\
+		\hline
+		32768 & 80 & 633 & 365\\
+		\hline
+		65536 & 429 & 2780 & 1596\\
+		\hline
+		131072 & 1907 & 11194 & 6578\\
+		\hline
+		262144 & 7791 & 44479 & 26199\\
+		\hline
+		524288 & 32901 & 179240 & 105709\\
+		\hline
+		1048576 & 198462 & 862873 & 509700\\
+		\hline
+		
+		% Tabellenbezeichung
+		\caption{Sortieren durch Einfügen mit Prefetch.}
+		\label{tab:insertionsort-v2}
+	\end{longtable}
+\end{center}
+
 \subsubsection{Interpretation}
