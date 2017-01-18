@@ -15,6 +15,7 @@
 %----------END Listing-Packages----------
 
 %----------BEGIN Table-Packages----------
+\usepackage{tabularx}
 \usepackage{longtable}
 \usepackage{hhline}
 \usepackage{multirow}
@@ -45,6 +46,7 @@
 \definecolor{purple}{rgb}{0.54,0,0.82}
 
 
+
 %Einstellungen für Pseudocode
 \lstloadlanguages{Matlab}
 \lstnewenvironment{PseudoCode}[1][]{
@@ -64,8 +66,10 @@
 
 % Zeigt nur Section/Subsection im Inhaltsverzeichnis
 \setcounter{tocdepth}{2}
+	\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 \begin{document}
+
 	
 	\include{titlepage}	
 	\tableofcontents

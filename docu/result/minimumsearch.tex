@@ -1,11 +1,11 @@
 \subsection{Minimumsuche}
 
-Folgende Zeitmessungen zeigen die Laufzeiten der Minimumsuche mit drei verschiedenen Implementierungen: Einmal mit einfacher Schleife (Normal), mit ausgerollten Schleifen und mit einem Prefetch-Befehl.
+Folgende Zeitmessungen zeigen die Laufzeiten der Minimumsuche mit drei verschiedenen Implementierungen: Normal, mit ausgerollten Schleifen und mit einem Prefetch-Befehl.
 
 \subsubsection{Variante 1: Normal}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -57,7 +57,7 @@ Folgende Zeitmessungen zeigen die Laufzeiten der Minimumsuche mit drei verschied
 \subsubsection{Variante 2: Mit Schleifen Ausrollen}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -109,7 +109,7 @@ Folgende Zeitmessungen zeigen die Laufzeiten der Minimumsuche mit drei verschied
 \subsubsection{Variante 3: Mit Prefetch}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -159,5 +159,4 @@ Folgende Zeitmessungen zeigen die Laufzeiten der Minimumsuche mit drei verschied
 \subsubsection{Interpretation}
 
 Bei genauerer Betrachtung der Tabellen \ref{tab:minimumsearch-v1}, \ref{tab:minimumsearch-v2} und \ref{tab:minimumsearch-v3} sind zunächst keine großen Unterschiede zu erkennen. Die Laufzeit wächst, wie erwartet, konstant mit der Feldgröße. Auch zwischen den unterschiedlichen Varianten der Array-Befüllung sind keine nennenswerten Auswirkungen auf die Laufzeit festzustellen, da in jedem Fall immer alle Elemente untersucht werden müssen.
-
-Zwischen der normalen Minimumsuche und der Variante mit Schleifen ausrollen sind können keine Unterschiede in der Laufzeit festgestellt werden; allein die Variante mit Prefetch zeigt einen kleinen Gewinn bei der Laufzeit.
+Die Variante mit Schleifen ausrollen ist etwas schneller als die normale Minimumsuche, was zu erwarten war. Unerwartet sind die Laufzeiten der Prefetch-Minimumsuche im Vergleich zur Variante mit Schleifen ausrollen. Die Minimumsuche mit Prefetch scheint etwas langsamer zu sein, dies könnte ein Indiz dafür sein, dass die Schleifen nicht ausgerollt werden.

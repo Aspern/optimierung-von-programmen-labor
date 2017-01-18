@@ -1,1 +1,18 @@
-\subsection{Quicksort}
+\subsection{Quicksort mit Three-Way-Partitioning}
+
+Bei dieser Variante von Quicksort handelt es sich um eine Implementierung von \textit{Robert Sedgewick} und \textit{Jon Bentey}\footnote{siehe: https://www.cs.princeton.edu/~rs/talks/QuicksortIsOptimal.pdf}. Bei dieser Variante werden drei Partitionen erstellt, die Erste enthält Elemente, die kleiner sind als das Pivotelement, die Zweite alle Elemente, welche gleich groß sind wie das Pivotelement und die letzte Partition enthält die  Größeren.
+
+\begin{figure}[htbp] 
+	\centering
+	\includegraphics[width=0.5\textwidth]{./img/quicksort-threeway}
+	\caption{Quicksort mit drei Partitionen.}
+\end{figure}
+
+\noindent
+Zwei Variablen $i$ und $j$ laufen vom Anfang beziehungsweise dem Ende des Arrays aufeinander zu und verteilen die Elemente bezüglich des Pivotelementes . Wenn die Zeiger sich überschneiden entstehen zwei Teilmengen, welche anschließend rekursiv mit Quicksort sortiert werden. Dies wiederholt sich, bis schließlich das komplette Array sortiert vorliegt.
+
+Quicksort hat eine Komplexität von $O(n*log(n))$ im besten und durchschnittlichen Fall sowie eine Komplexität von $O(n^2)$ im schlechtesten. Die Laufzeit hängt im Wesentlichen von der Wahl des Pivotelementes  ab, liegt dieses beispielsweise am Ende oder Anfang des Arrays wird jeder Rekursionsschritt nur um eins keiner, was dem schlechtesten Fall entspricht.
+
+\newpage
+
+\textbf{Beispiel 3.5.1 - Ausführung von Quicksort mit Three-Way-Partitioning}

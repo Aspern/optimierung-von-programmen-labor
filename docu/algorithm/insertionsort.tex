@@ -1,5 +1,7 @@
-\subsection{Sortieren durch Einfügen}
-Der Algorithmus \textit{Sortieren durch Einfügen} (englisch Insertionsort) sortiert ein Array von Elementen in aufsteigender Reihenfolge. Dabei iteriert der Algorithmus in einer äußeren Schleife über das gesamte Array. Jedes Element wird anschließend in einer inneren Schleife mit jedem Vorgänger verglichen und vertauscht, solange dieser größer ist wie das aktuelle Element. Am Ende entsteht so ein vollständig sortiertes Array. Der Algorithmus liegt in der Komplexitätsklasse $O(n^2)$.
+\subsection{Sortieren durch direktes Einfügen}
+Der Algorithmus \textit{Sortieren durch direktes Einfügen} (englisch Insertionsort) sortiert ein Array in aufsteigender Reihenfolge. Dabei iteriert der Algorithmus in einer äußeren Schleife über das gesamte Array. Jedes Element wird anschließend in einer inneren Schleife mit jedem Vorgänger verglichen und vertauscht, solange dieser größer ist wie das aktuelle Element. Am Ende entsteht so ein vollständig sortiertes Array.
+
+Der Algorithmus hat im durchschnittlichen und schlimmsten Fall eine Komplexitätsklasse von $O(n^2)$, im besten Fall eine Komplexität von $O(n)$. Die Laufzeit im schlechtesten Fall ist jedoch immer schlecht, da für jedes Element stets $j - 1$ Schiebeoperationen benötigt werden. Folgender Pseudocode beschreibt den Insertionsrot-Algorithmus:
 
 \begin{PseudoCode}
 	A := array with comparable elements;

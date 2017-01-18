@@ -1,11 +1,11 @@
-\subsection{Sortieren durch Einfügen}
+\subsection{Sortieren durch direktes Einfügen}
 
 Die nachfolgenden Laufzeiten vergleichen zwei unterschiedliche Implementierungen des Algorithmus \textit{Sortieren durch Einfügen}. In der ersten Variante wird mit zwei Schleifen sortiert, in der zweiten Abwandlung wird die innere Schleife ausgerollt und ein Prefetch-Befehl verwendet.
 
 \subsubsection{Variante 1: Normal}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -37,7 +37,7 @@ Die nachfolgenden Laufzeiten vergleichen zwei unterschiedliche Implementierungen
 \subsubsection{Variante 2: Mit Prefetch}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -67,3 +67,7 @@ Die nachfolgenden Laufzeiten vergleichen zwei unterschiedliche Implementierungen
 \end{center}
 
 \subsubsection{Interpretation}
+
+Bei der normalen Variante bestätigt sich die Komplexität von $O(n)$ im besten Fall, sowie $O(n^2)$ im durchschnittlichen und schlechtesten Fall. Wie zu erwarten sind die Laufzeiten bei absteigend sortierten Folgen deutlich größer, da hier jedes Element bis nach vorne getauscht werden muss.
+
+Die optimierte Variante verhält sich im durchschnittlichen und schlechtesten Fall gleich wie die Normale. Zusätzlich ist die Laufzeit hier durch den Prefetch-Befehl besser geworden. Im besten Fall gab es jedoch eine deutliche Verschlechterung, hier wächst die Komplexität plötzlich quadratisch, möglicherweise ausgelöst durch den an dieser Stelle unnötig ausgeführten Prefetch.

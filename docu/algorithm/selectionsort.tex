@@ -1,6 +1,16 @@
 \subsection{Sortieren durch direkte Auswahl}
 
-Der Algorithmus \textit{Sortieren durch direkte Auswahl} (englisch Selectionsort) sortiert ein Array von Elementen in aufsteigender Reihenfolge. Dabei sucht der Algorithmus das kleinste Element im Array und vertuscht es mit der ersten Stelle im Array. Anschließend wird im Array ohne die erste Stelle erneut das Minimum gesucht und an die zweite Stelle getauscht. So entsteht ein sortierter Teil $S$ und ein unsortierter Teil $U$ im Array. Der Algorithmus fährt solange fort, bis in $U$ keine Elemente mehr vorhanden sind. Der Algorithmus liegt in der Komplexitätsklasse $O(n^2)$.
+Der Algorithmus \textit{Sortieren durch direkte Auswahl} (englisch Selectionsort) sortiert ein Array von Elementen in aufsteigender Reihenfolge. Dabei läuft der Algorithmus mit einer Variablen $i$ über das Array der Größe $SIZE$, sucht im Bereich $A[i]$ - $A[SIZE]$ das Minimum $MIN$ und vertauscht die Stellen $A[i]$ und $A[MIN]$. So entsteht ein sortierter Bereich von $A[0]$ - $A[i]$.
+
+Um ein Array mit $n$ Elementen mittels Selectionsort zu soriteren, muss $n-1$-mal das Minimum bestimmt und vertauscht werden. Die Anzahl der notwendigen Vergleiche wären dann:
+
+\begin{gather*}
+	(n-1) + (n-2)  +(n-3)+ ... + 3 + 2 + 1\\
+	\Leftrightarrow \frac{n^2}{2} - \frac{n}{2}
+\end{gather*}
+
+\noindent
+Der Selectionsort-Algorithmus hat also eine Laufzeit von $O(n^2)$. Der Folgende Pseudocode beschreibt die Implementierung von Selectionsort.
 
 \begin{PseudoCode}
 A := array with comparable elements;
@@ -38,7 +48,6 @@ In diesem Fall muss nicht getauscht werden da $4$ bereits das Minimum ist.
 \begin{equation*}
 	A = \{\textcolor{green}{1}, \textcolor{green}{4}, 17, 7, 6, 7\},\;i = 1 \\
 \end{equation*}
-\newpage
 \noindent
 Im nächsten Schritt wird A[2] = 17 mit dem gefundenen Minimum $6$ aus $A[2] - A[5]$ behandelt.
 \begin{equation*}

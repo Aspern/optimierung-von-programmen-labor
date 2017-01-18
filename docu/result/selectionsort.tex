@@ -5,7 +5,7 @@ Die nachfolgenden Tabellen zeigen die Laufzeiten von drei verschiedenen Variante
 \subsubsection{Variante 1: Normal}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -37,7 +37,7 @@ Die nachfolgenden Tabellen zeigen die Laufzeiten von drei verschiedenen Variante
 \subsubsection{Variante 2: Mit Schleifen Ausrollen}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -69,7 +69,7 @@ Die nachfolgenden Tabellen zeigen die Laufzeiten von drei verschiedenen Variante
 \subsubsection{Variante 3: Mit Prefetch}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -102,4 +102,4 @@ Die nachfolgenden Tabellen zeigen die Laufzeiten von drei verschiedenen Variante
 
 Die Laufzeit aller drei Varianten von \textit{Sortieren durch direkte Auswahl} wächst exponentiell, also mit $O(n^2)$. Ein deutlicher Unterschied zeigt sich insbesondere zwischen der Variante mit normaler Minimumsuche und den beiden optimierten Varianten. Die Minimumsuche mit Schleifen ausrollen beziehungsweise mit Prefetch bringen hier einen Zeitvorteil von ca. 34\%.
 
-Vergleicht man dagegen Die Laufzeiten der beiden optimierten Varianten, lässt sich hier keinen Unterschied feststellen. Im vorherigen Kapitel wurde bei der Variante mit Prefetch ein kleiner Vorteil festgestellt, dieser lässt sich bei der Verwendung im Sortierverfahren nicht wieder finden.
+Vergleicht man dagegen Die Laufzeiten der beiden optimierten Varianten, bestätigt sich der Verdacht aus dem vorherigen Abschnitt. Der Selectionsort, welcher Minimumsuche mit Prefetch verwendet ist eher etwas langsamer als die anderen optimierte Variante.

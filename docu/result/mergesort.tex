@@ -3,7 +3,7 @@
 Nachfolgende Tabelle zeigt die Laufzeit des \textit{Bottom-Up Mergesort} Algorithmus.
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -29,9 +29,11 @@ Nachfolgende Tabelle zeigt die Laufzeit des \textit{Bottom-Up Mergesort} Algorit
 		\hline
 		
 		% Tabellenbezeichung
-		\caption{Sortieren durch Einfügen mit Prefetch.}
-		\label{tab:insertionsort-v2}
+		\caption{Sortieren mit Bottom-Up Mergesort.}
+		\label{tab:mergesort}
 	\end{longtable}
 \end{center}
 
 \subsubsection{Interpretation}
+
+Bottom-Up Mergesort verhält sich wie erwartet in allen drei Fällen gleich: Die Komplexität ist $O(n*log(n))$. Es spielt dabei keine Rolle in welcher Reihenfolge die Elemente im Array vorliegen, allein die Größe der Liste spielt bei der Laufzeit eine Rolle.

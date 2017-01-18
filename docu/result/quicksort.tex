@@ -5,7 +5,7 @@ Nachfolgend werden die Laufzeiten von zwei Variante des \textit{Quicksort} Algor
 \subsubsection{Variante 1: Three-Way-Partitioning}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -31,15 +31,15 @@ Nachfolgend werden die Laufzeiten von zwei Variante des \textit{Quicksort} Algor
 		\hline
 		
 		% Tabellenbezeichung
-		\caption{Sortieren durch Einfügen mit Prefetch.}
-		\label{tab:insertionsort-v2}
+		\caption{Sortieren mit Quicksort (Three-Way-Partitioning).}
+		\label{tab:quicksort-v1}
 	\end{longtable}
 \end{center}
 
 \subsubsection{Variante 2: Hybrid}
 
 \begin{center}
-	\begin{longtable}{|p{5cm}|p{3cm}|p{3cm}|p{3cm}|}
+	\begin{longtable}{|R{5cm}|R{3cm}|R{3cm}|R{3cm}|}
 		\hline
 		
 		% Tabelleninhalt
@@ -65,9 +65,13 @@ Nachfolgend werden die Laufzeiten von zwei Variante des \textit{Quicksort} Algor
 		\hline
 		
 		% Tabellenbezeichung
-		\caption{Sortieren durch Einfügen mit Prefetch.}
-		\label{tab:insertionsort-v2}
+		\caption{Sortieren mit hybrider Quicksort-Variante.}
+		\label{tab:quicksort-v2}
 	\end{longtable}
 \end{center}
 
 \subsubsection{Interpretation}
+
+Die normale Implementierung des Algorithmus bestätigt bei allen drei Testvarianten eine Komplexität von $O(n*log(n))$. Da als Pivotelement die Mitte gewählt wurde, ist die Laufzeit im absteigenden, beziehungsweise aufsteigenden Fall deutlich besser, wie bei zufällig generierten Werden. Der schlechteste Fall könnte bei diesem Testszenario nur bei den zufällig befüllten Arrays entstehen. Dies kann in den Messwerten hier jedoch nicht bestätigt werden.
+
+Die Hybride Variante verhält sich bei der Komplexität gleich wie die Normale, jedoch ist die Laufzeit dort konstant schlechter. Insbesondere bei aufsteigend und absteigend sortierten Arrays. Möglicherweise wäre sie beim Eintreffen des schlechtesten Falls schneller, dies lässt sich an den Ergebnissen jedoch nicht bestätigen.

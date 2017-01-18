@@ -1,6 +1,6 @@
 \subsection{Bottum-Up Mergesort}
 
-Der Bottom-Up Mergesort Algorithmus besteht aus zwei Teilen: Einer Merge-Funktion und zwei verschachtelten schleifen, welche mit Hilfe von Merge ein Array sortieren. In dieser Implementierung wurde eine bitonische Variante von Merge verwendet, bei welcher zwei gegenläufig sortierte Hälften miteinander verschmolzen werden.
+Der Bottom-Up-Mergesort-Algorithmus besteht aus zwei Teilen: Einer Merge-Funktion und zwei verschachtelten Schleifen, welche die Funktion aufrufen. In dieser Implementierung wurde eine bitonische Variante von Merge verwendet, bei welcher zwei gegenläufig sortierte Hälften miteinander verschmolzen werden.
 
 
 \begin{figure}[htbp] 
@@ -10,7 +10,7 @@ Der Bottom-Up Mergesort Algorithmus besteht aus zwei Teilen: Einer Merge-Funktio
 \end{figure}
 
 \noindent
-Bottom-Up Mergesort ist nicht rekursiv implementiert, sondern wir stattdessen mit zwei Schleifen realisiert. Für das Merge wird ein zweiten Array für Zwischenwerten benötigt. In einer effizienten Implementierung wird dieser Zwischenspeicher nur einmal erzeugt und für jeden Merge-Schritt wiederverwendet. Die Komplexität des Algorithmus beträgt $O(n*log(n))$.
+Bottom-Up Mergesort ist nicht rekursiv implementiert, sondern wir stattdessen mit zwei Schleifen realisiert. Für das Merge wird ein zweiten Array für Zwischenwerten benötigt. In einer effizienten Implementierung wird dieser Zwischenspeicher nur einmal erzeugt und für jeden Merge-Schritt wiederverwendet. Die Komplexität des Algorithmus beträgt $O(n*log(n))$ im Besten, durchschnittlichen und schlechtesten Fall. Der Algorithmus wird mit folgendem Pseudocode beschrieben.
 
 \begin{PseudoCode}
 	A := array with comparable elements;
@@ -24,17 +24,17 @@ Bottom-Up Mergesort ist nicht rekursiv implementiert, sondern wir stattdessen mi
 	end for
 \end{PseudoCode}
 
+\newpage
 \noindent
 \textbf{Beispiel 3.4.1 - Ausführung von Bottom-Up Mergesort}
 
 \noindent
-Der Algorithmus beginnt mit Teilarrays der Größe $len=1$.
+Der Algorithmus beginnt mit Teilarrays der Größe $n=1$.
 \begin{equation*}
 	\{4\},\;\{15\},\;\{9\},\;\{1\},\;\{10\},\;\{7\},\;\{9\},\;\{13\},\;\{2\},\;\{5\}
 \end{equation*}
-\newpage
 \noindent
-Anschließend werden die Elemente zu Arrays der Größe $2$ zusammengeführt.
+Anschließend werden die Elemente zu Arrays der Größe $2$ verschmolzen.
 \begin{gather*}
 	\{4\},\;\{15\},\;\{9\},\;\{1\},\;\{10\},\;\{7\},\;\{9\},\;\{13\},\;\{2\},\;\{5\}\\
 	\{4, 15\},\;\{1, 9\},\;\{7, 10\},\;\{9, 13\},\;\{2, 5\}
