@@ -27,6 +27,8 @@ namespace opl {
         // Using the element in the middle as pivot.
         std::swap(a[(lo + hi) / 2], a[hi]);
 
+
+
         T v = a[hi];
 
         if (hi <= lo) return;
@@ -75,7 +77,6 @@ namespace opl {
             if (k > 0)
                 k--;
         }
-
 
         quickSort(a, lo, j);
         quickSort(a, i, hi);
@@ -161,8 +162,11 @@ namespace opl {
             }
 
             // Proof if one half is ´opl::constant::quick_sort_cutt_off´-x larger the the other.
-            if (((j - lo) < (opl::constant::quick_sort_cutt_off * (hi - i))) ||
+            if (((j - lo) > (opl::constant::quick_sort_cutt_off * (hi - i))) ||
                 (((j - lo) * opl::constant::quick_sort_cutt_off < (hi - i)))) {
+
+                //Ausgabe einfügen
+
                 int mid = (lo + hi) / 2;
                 quickSortHybrid(a, aux, lo, mid);
                 quickSortHybrid(a, aux, mid + 1, hi);

@@ -35,6 +35,11 @@ namespace opl {
         return a[minimum(a, 0)];
     }
 
+    template<typename T, size_t SIZE>
+    void minimumTest(std::array<T, SIZE> &a)  {
+        minimum(a);
+    }
+
 
     /**
      * Returns the position of the minimum in an array starting on a ´left´ border. The algorithm uses
@@ -66,6 +71,11 @@ namespace opl {
     template<typename T, size_t SIZE>
     T minimumOptimized(const std::array<T, SIZE> &a) {
         return a[minimumOptimized(a, 0)];
+    }
+
+    template<typename T, size_t SIZE>
+   void minimumOptimizedTest(std::array<T, SIZE> &a) {
+        a[minimumOptimized(a, 0)];
     }
 
     /**
@@ -100,6 +110,11 @@ namespace opl {
     template<typename T, size_t SIZE>
     T minimumWithPrefetch(const std::array<T, SIZE> &a) {
         return a[minimumWithPrefetch(a, 0)];
+    }
+
+    template<typename T, size_t SIZE>
+    void minimumWithPrefetchTest(std::array<T, SIZE> &a) {
+        a[minimumWithPrefetch(a, 0)];
     }
 }
 
