@@ -42,7 +42,7 @@ namespace opl {
         const size_t nElementsInCacheLine = (opl::constant::cache_line_size / sizeof(T));
 
         for (size_t i = 1; i < SIZE; i++)
-            for (size_t j = i + nElementsInCacheLine; j > nElementsInCacheLine;) {
+            for (size_t j = i + nElementsInCacheLine; j > nElementsInCacheLine && a[j -nElementsInCacheLine - 1] > a[j- nElementsInCacheLine];) {
                 j -= nElementsInCacheLine;
                 __builtin_prefetch(&a[j - nElementsInCacheLine]);
                 for(size_t k = j; k > 0  && a[k - 1] > a[k]; k--)

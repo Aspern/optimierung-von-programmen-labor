@@ -47,11 +47,11 @@ namespace opl {
 //                opl::selectionSort,
 //                opl::selectionSortOptimized,
 //                opl::selectionSortWithPrefetch,
-//                opl::insertionSort,
-//                opl::insertionSortWithPrefetch,
+                opl::insertionSort,
+                opl::insertionSortWithPrefetch,
 //                opl::bottomUpMergeSort,
-                opl::quickSort,
-                opl::quickSortHybrid
+//                opl::quickSort,
+//                opl::quickSortHybrid
         };
 
         static void execute(std::array<double, SIZE> &a) {

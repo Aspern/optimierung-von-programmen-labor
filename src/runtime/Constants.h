@@ -33,7 +33,7 @@ namespace opl {
         /**
          * The size of elements that are no more executable on the runtime environment.
          */
-        const size_t max_array_size = 137438953472;
+        const size_t max_array_size = 524288;
 
     }
 }
